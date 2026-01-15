@@ -484,600 +484,342 @@ stroke: color,
             { 
                 id: '1', 
                 code: '1.0', 
-                term: 'Customer Lifecycle Management', 
-                definition: 'All interactions and processes throughout the customer relationship from initial awareness through ongoing service delivery', 
-                scopeNote: 'Encompasses marketing, acquisition, onboarding, and retention activities. Excludes internal operations and compliance functions.', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'rpm', 'rpmh', 'annuity', 'automated-investing', 'fintech', 'mobile', 'sbbm', 'shareholder', 'workplace-finance'], 
+                term: 'Customer Acquisition', 
+                definition: 'Marketing and lead generation activities', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing'], 
                 children: [ 
                     { 
-                        id: '1.1', 
-                        code: '1.1', 
-                        term: 'Customer Acquisition', 
-                        definition: 'Activities designed to attract and convert prospects into customers', 
-                        scopeNote: 'Includes marketing, lead generation, and pre-qualification processes. For existing customer cross-sell activities, see 1.3 Customer Development.', 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'fintech', 'automated-investing'], 
-                        children: [ 
-                            { 
-                                id: '1.1.1', 
-                                code: '1.1.1', 
-                                term: 'Marketing Communications', 
-                                narrowerTerms: ['Public Homepages', 'Social Media Presence', 'Email Campaigns', 'Educational Content', 'Thought Leadership Materials'], 
-                                relatedTerms: ['3.1.1 Financial Education Resources'], 
-                                usedFor: ['Marketing Content'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'fintech'] 
-                            }, 
-                            { 
-                                id: '1.1.2', 
-                                code: '1.1.2', 
-                                term: 'Lead Generation Tools', 
-                                narrowerTerms: ['Quote Calculators', 'Product Selectors', 'Comparison Tools', 'Pre-qualification Forms'], 
-                                relatedTerms: ['3.2 Planning Calculators'], 
-                                usedFor: ['Lead Capture Tools'], 
-                                monitors: ['bank', 'lending', 'ccm', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'automated-investing'] 
-                            } 
-                        ] 
+                        id: '1.0.1', 
+                        code: '1.0.1', 
+                        term: 'Public-Facing Resources', 
+                        definition: 'Resources accessible to prospective customers before account opening', 
+                        narrowerTerms: ['Public Homepages', 'Education and Thought Leadership', 'Firm and Contact Information', 'Product and Service Information'], 
+                        relatedTerms: ['1.2 Lead Generation'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing'] 
                     }, 
                     { 
-                        id: '1.2', 
-                        code: '1.2', 
-                        term: 'Customer Onboarding', 
-                        definition: 'Processes for establishing new customer relationships and initial account configuration', 
-                        scopeNote: 'Covers account opening through initial setup. For ongoing account maintenance, see 2.0 Account Management.', 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '1.2.1', 
-                                code: '1.2.1', 
-                                term: 'Account Opening', 
-                                narrowerTerms: ['Applications Processing', 'Identity Verification', 'Document Collection', 'Funding Processes'], 
-                                relatedTerms: ['7.2 Regulatory Compliance'], 
-                                usedFor: ['Account Establishment'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'rpm', 'annuity'] 
-                            }, 
-                            { 
-                                id: '1.2.2', 
-                                code: '1.2.2', 
-                                term: 'Initial Configuration', 
-                                narrowerTerms: ['Profile Creation', 'Preference Settings', 'Security Setup', 'Welcome Experiences'], 
-                                relatedTerms: ['2.1 Profile Management'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'mobile'] 
-                            } 
-                        ] 
-                    }, 
-                    { 
-                        id: '1.3', 
-                        code: '1.3', 
-                        term: 'Customer Development', 
-                        definition: 'Activities to deepen existing customer relationships', 
-                        scopeNote: 'Includes cross-selling, upselling, and loyalty programs. Excludes new customer acquisition.', 
-                        monitors: ['bank', 'ccm', 'direct-bank', 'amm-adv', 'workplace-finance'], 
-                        children: [ 
-                            { 
-                                id: '1.3.1', 
-                                code: '1.3.1', 
-                                term: 'Relationship Building', 
-                                narrowerTerms: ['Rewards Programs', 'Referral Programs', 'Loyalty Benefits'], 
-                                relatedTerms: ['5.3.3 Rewards Redemption'], 
-                                monitors: ['bank', 'ccm', 'direct-bank'] 
-                            } 
-                        ] 
+                        id: '1.0.2', 
+                        code: '1.0.2', 
+                        term: 'Lead Generation', 
+                        definition: 'Tools and content designed to convert prospects into applicants', 
+                        narrowerTerms: ['Marketing Content', 'Offers and Bonuses', 'Quote Tools', 'Coverage Tools', 'Product Selection and Comparison Tools'], 
+                        relatedTerms: ['1.1 Public-Facing Resources', '2.0 Customer Onboarding'], 
+                        usedFor: ['Pre-Qualification', 'Referral Programs'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing'] 
                     } 
                 ] 
             }, 
             { 
                 id: '2', 
                 code: '2.0', 
-                term: 'Account Management', 
-                definition: 'Ongoing maintenance and administration of customer accounts and preferences', 
-                scopeNote: 'Covers all account servicing activities post-onboarding. For initial setup, see 1.2 Customer Onboarding.', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'rpm', 'annuity', 'mobile'], 
+                term: 'Customer Onboarding', 
+                definition: 'New account setup and initial configuration', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'], 
                 children: [ 
                     { 
                         id: '2.1', 
                         code: '2.1', 
-                        term: 'Profile Management', 
-                        definition: 'Customer information and preference administration', 
-                        scopeNote: 'Includes personal information updates and communication preferences. For security settings, see 2.2 Security Administration.', 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'rpm', 'mobile'], 
-                        children: [ 
-                            { 
-                                id: '2.1.1', 
-                                code: '2.1.1', 
-                                term: 'Personal Information', 
-                                narrowerTerms: ['Contact Information Updates', 'Beneficiary Designations', 'Authorized Users Management'], 
-                                relatedTerms: ['1.2.2 Initial Configuration'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'rpm', 'annuity'] 
-                            }, 
-                            { 
-                                id: '2.1.2', 
-                                code: '2.1.2', 
-                                term: 'Communication Preferences', 
-                                narrowerTerms: ['Alert Configurations', 'Notification Settings', 'Language Preferences', 'Delivery Preferences'], 
-                                usedFor: ['Alert Management'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'health-plan', 'mobile'] 
-                            } 
-                        ] 
+                        term: 'Account Opening', 
+                        definition: 'Application submission and approval process', 
+                        narrowerTerms: ['Application Forms', 'Application Processing'], 
+                        relatedTerms: ['2.2 Initial Setup'], 
+                        usedFor: ['Identity Verification', 'Document Collection', 'Initial Funding'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'] 
                     }, 
                     { 
                         id: '2.2', 
                         code: '2.2', 
-                        term: 'Security Administration', 
-                        definition: 'Authentication and access control management', 
-                        scopeNote: 'Covers customer-managed security settings. For system security, see 7.1 Security Operations.', 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'mobile', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '2.2.1', 
-                                code: '2.2.1', 
-                                term: 'Authentication Management', 
-                                narrowerTerms: ['Password Administration', 'Multi-factor Authentication', 'Biometric Configuration', 'Device Management'], 
-                                relatedTerms: ['7.1 Security Operations'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'mobile', 'fintech'] 
-                            }, 
-                            { 
-                                id: '2.2.2', 
-                                code: '2.2.2', 
-                                term: 'Access Controls', 
-                                narrowerTerms: ['User Permissions', 'Delegation Settings', 'Privacy Controls'], 
-                                relatedTerms: ['2.1.1 Personal Information'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'workplace-finance'] 
-                            } 
-                        ] 
-                    }, 
-                    { 
-                        id: '2.3', 
-                        code: '2.3', 
-                        term: 'Account Information Display', 
-                        definition: 'Presentation of account data and documents to customers', 
-                        scopeNote: 'Covers all account views and statements. For transactions, see 5.0 Transaction Processing.', 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'rpm', 'mobile'], 
-                        children: [ 
-                            { 
-                                id: '2.3.1', 
-                                code: '2.3.1', 
-                                term: 'Account Summaries', 
-                                narrowerTerms: ['Dashboard Views', 'Mobile Home Screens', 'Account Aggregation Displays', 'Multi-account Views'], 
-                                relatedTerms: ['4.1 Digital Interfaces'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'mobile', 'e-monitor'] 
-                            }, 
-                            { 
-                                id: '2.3.2', 
-                                code: '2.3.2', 
-                                term: 'Account Details', 
-                                narrowerTerms: ['Balance Information', 'Holdings Details', 'Transaction Histories', 'Performance Metrics'], 
-                                relatedTerms: ['5.1 Payment Transactions'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'rpm'] 
-                            }, 
-                            { 
-                                id: '2.3.3', 
-                                code: '2.3.3', 
-                                term: 'Documents and Statements', 
-                                narrowerTerms: ['Account Statements', 'Tax Documents', 'Confirmations', 'Legal Documents'], 
-                                relatedTerms: ['7.2.1 Required Disclosures'], 
-                                usedFor: ['Document Center'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'rpm', 'annuity'] 
-                            } 
-                        ] 
+                        term: 'Initial Setup', 
+                        definition: 'Configuration activities following account approval', 
+                        narrowerTerms: ['Profile Creation', 'Preference Setup', 'Onboarding Experience'], 
+                        relatedTerms: ['2.1 Account Opening', '5.1 Profile and Preferences'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'] 
                     } 
                 ] 
             }, 
             { 
                 id: '3', 
                 code: '3.0', 
-                term: 'Financial Planning and Education', 
-                definition: 'Tools and resources for financial decision-making and learning', 
-                scopeNote: 'Includes both self-service tools and educational content. For advisor services, see 6.2 Professional Support.', 
-                monitors: ['amm-inv', 'amm-adv', 'broker', 'rpm', 'automated-investing', 'fintech', 'workplace-finance'], 
+                term: 'Account Information', 
+                definition: 'Account data display and financial analysis', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '3.1', 
                         code: '3.1', 
-                        term: 'Educational Resources', 
-                        definition: 'Learning materials and research content', 
-                        scopeNote: 'Covers all educational content types. For interactive tools, see 3.2 Planning Calculators.', 
-                        monitors: ['amm-inv', 'amm-adv', 'broker', 'rpm', 'automated-investing', 'fintech', 'workplace-finance'], 
-                        children: [ 
-                            { 
-                                id: '3.1.1', 
-                                code: '3.1.1', 
-                                term: 'Financial Education Resources', 
-                                narrowerTerms: ['Investment Education', 'Retirement Planning Guides', 'Insurance Education', 'Banking Basics'], 
-                                relatedTerms: ['1.1.1 Marketing Communications'], 
-                                monitors: ['amm-inv', 'amm-adv', 'broker', 'rpm', 'fintech', 'workplace-finance'] 
-                            }, 
-                            { 
-                                id: '3.1.2', 
-                                code: '3.1.2', 
-                                term: 'Market Research Resources', 
-                                narrowerTerms: ['Market Commentary', 'Economic Analysis', 'Investment Research', 'Fund Profiles'], 
-                                relatedTerms: ['3.2.3 Investment Analysis Tools'], 
-                                monitors: ['amm-inv', 'amm-adv', 'broker', 'shareholder'] 
-                            } 
-                        ] 
+                        term: 'Account Summary Views', 
+                        definition: 'High-level aggregated views of account holdings and status', 
+                        narrowerTerms: ['Website Homepages and Dashboards', 'Mobile Home Screens and Dashboards', 'Account Aggregation', 'Account Integration', 'Authorized User Views', 'Display Customization'], 
+                        relatedTerms: ['3.2 Account Details', '8.2 User Interface'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '3.2', 
                         code: '3.2', 
-                        term: 'Planning Calculators', 
-                        definition: 'Interactive tools for financial planning and analysis', 
-                        scopeNote: 'Includes all calculator types. For educational content, see 3.1 Educational Resources.', 
-                        monitors: ['amm-inv', 'amm-adv', 'broker', 'rpm', 'automated-investing', 'lending', 'workplace-finance'], 
-                        children: [ 
-                            { 
-                                id: '3.2.1', 
-                                code: '3.2.1', 
-                                term: 'Goal Planning Tools', 
-                                narrowerTerms: ['Retirement Calculators', 'College Savings Planners', 'Budget Calculators', 'Savings Goal Tools'], 
-                                usedFor: ['Financial Planning Tools'], 
-                                monitors: ['amm-inv', 'rpm', 'automated-investing', 'workplace-finance'] 
-                            }, 
-                            { 
-                                id: '3.2.2', 
-                                code: '3.2.2', 
-                                term: 'Needs Analysis Tools', 
-                                narrowerTerms: ['Insurance Needs Calculators', 'Investment Risk Assessments', 'Debt Analysis Tools', 'Cash Flow Analyzers'], 
-                                monitors: ['amm-inv', 'amm-adv', 'broker', 'life', 'lending'] 
-                            }, 
-                            { 
-                                id: '3.2.3', 
-                                code: '3.2.3', 
-                                term: 'Investment Analysis Tools', 
-                                narrowerTerms: ['Portfolio Analyzers', 'Fund Screeners', 'Quote Tools', 'Performance Calculators'], 
-                                relatedTerms: ['3.1.2 Market Research Resources'], 
-                                monitors: ['amm-inv', 'amm-adv', 'broker', 'automated-investing'] 
-                            } 
-                        ] 
+                        term: 'Account Details', 
+                        definition: 'Detailed transaction and activity data for specific account types', 
+                        narrowerTerms: ['Account Activity', 'Investment Account Details', 'Bank Account Details', 'Credit Card Account Details', 'Retirement Account Details', 'Insurance Account Details', 'Annuity Contract Details', 'Loan Account Details', 'Health Plan Account Details'], 
+                        relatedTerms: ['3.1 Account Summary Views', '3.3 Account Documents', '6.0 Transactions and Money Movement'], 
+                        usedFor: ['Transaction history', 'Payment history', 'Transfer history', 'Contribution history', 'Investment Holdings', 'Performance Data', 'Portfolio Analysis', 'Realized Gain/Loss Reporting', 'Investment Balances', 'Fund Options', 'Subaccounts', 'Home policy details', 'Auto policy details', 'Life insurance policy details', 'Auto loan details', 'Home loan details', 'Escrow information', 'Amortization information', 'Coverage and Benefit Details', 'Medical Records', 'Test Results', 'Treatment History', 'Health Metrics'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '3.3', 
+                        code: '3.3', 
+                        term: 'Account Documents', 
+                        definition: 'Downloadable statements, forms, and regulatory documentation', 
+                        narrowerTerms: ['Document Center', 'Statements', 'Disclosures and Notices', 'Proof of Insurance', 'Prospectuses', 'Forms', 'Tax Documents'], 
+                        relatedTerms: ['3.2 Account Details', '5.1 eDelivery Management'], 
+                        usedFor: ['Audit Documentation (entry term)', 'Regulatory Reporting (entry term)'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
             { 
                 id: '4', 
                 code: '4.0', 
-                term: 'Digital Experience', 
-                definition: 'User interface and digital interaction capabilities across all platforms', 
-                scopeNote: 'Covers all digital touchpoints and user experience elements. For security features, see 7.0 Compliance and Security.', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'mobile', 'fintech', 'e-monitor'], 
+                term: 'Planning And Education', 
+                definition: 'Tools and resources to support financial decision-making and knowledge development', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'], 
                 children: [ 
                     { 
                         id: '4.1', 
                         code: '4.1', 
-                        term: 'Digital Interfaces', 
-                        definition: 'Platform types and interface technologies', 
-                        scopeNote: 'Includes all digital access methods. For specific features, see 4.2 Interface Features.', 
-                        monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'mobile', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '4.1.1', 
-                                code: '4.1.1', 
-                                term: 'Platform Types', 
-                                narrowerTerms: ['Web Applications', 'Mobile Applications', 'Tablet Applications', 'API Services'], 
-                                relatedTerms: ['2.3.1 Account Summaries'], 
-                                usedFor: ['Digital Platforms'], 
-                                monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'mobile', 'fintech'] 
-                            } 
-                        ] 
+                        term: 'Research and Education', 
+                        definition: 'Information resources and learning materials for financial topics', 
+                        narrowerTerms: ['Market and Investment Research', 'Financial Education', 'Health and Safety Education', 'Cybersecurity Education'], 
+                        relatedTerms: ['4.2 Planning Tools', '4.3 Advisor Education and Tools'], 
+                        usedFor: ['Investment Screeners', 'Quotes', 'Watchlists', 'Investment Alerts', 'Fund Profiles', 'Fund Comparison Tools', 'Literature Center', 'Health Assessment', 'Mental Health', 'Symptom Checker', 'Property Protection Education', 'Identity Protection Education', 'Scam Awareness Education', 'Fraud Prevention Education', 'Educational Content'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
                     }, 
                     { 
                         id: '4.2', 
                         code: '4.2', 
-                        term: 'Interface Features', 
-                        definition: 'User interface elements and interaction capabilities', 
-                        scopeNote: 'Covers all interface components. For automated features, see 4.2.1 Automated Assistance.', 
-                        monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'mobile', 'fintech', 'e-monitor'], 
-                        children: [ 
-                            { 
-                                id: '4.2.1', 
-                                code: '4.2.1', 
-                                term: 'Automated Assistance', 
-                                narrowerTerms: ['Chatbots', 'Virtual Assistants', 'Robo-advisory Services', 'Automated Recommendations'], 
-                                relatedTerms: ['6.1.1 Help Resources'], 
-                                usedFor: ['AI Support'], 
-                                monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'mobile', 'fintech'] 
-                            } 
-                        ] 
+                        term: 'Planning Tools', 
+                        definition: 'Interactive calculators and planning applications for financial goal-setting', 
+                        narrowerTerms: ['Budgeting Tools', 'Spending Analysis Tools', 'Savings Tools', 'Retirement Planning Tools', 'Goal Planning Tools', 'Financial Wellness Tools'], 
+                        relatedTerms: ['4.1 Research and Education', '6.0 Transactions and Money Movement'], 
+                        usedFor: ['Planning Calculators'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
+                    }, 
+                    { 
+                        id: '4.3', 
+                        code: '4.3', 
+                        term: 'Advisor Education and Tools', 
+                        definition: 'Professional development resources and practice management tools for financial advisors', 
+                        narrowerTerms: ['CE Platforms', 'Practice Management Resources', 'Portfolio Construction and Analysis Tools', 'Hypothetical Tools', 'Illustration Tools'], 
+                        relatedTerms: ['4.1 Research and Education', '4.2 Planning Tools'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
                     } 
                 ] 
             }, 
             { 
                 id: '5', 
                 code: '5.0', 
-                term: 'Transaction Processing', 
-                definition: 'All financial movements and transaction types', 
-                scopeNote: 'Covers all transaction categories across products. For account views, see 2.3 Account Information Display.', 
-                monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'ccm', 'mobile', 'fintech'], 
+                term: 'Account Servicing', 
+                definition: 'Ongoing account maintenance and product administration', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '5.1', 
                         code: '5.1', 
-                        term: 'Payment Transactions', 
-                        definition: 'Bill payment and person-to-person payment processing', 
-                        scopeNote: 'Includes all payment types except investment transactions. For investment transactions, see 5.2.', 
-                        monitors: ['bank', 'direct-bank', 'ccm', 'mobile', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '5.1.1', 
-                                code: '5.1.1', 
-                                term: 'Payment Types', 
-                                narrowerTerms: ['Bill Payments', 'P2P Payments', 'Scheduled Payments', 'Recurring Payments'], 
-                                relatedTerms: ['2.3.2 Account Details'], 
-                                monitors: ['bank', 'direct-bank', 'mobile', 'fintech'] 
-                            }, 
-                            { 
-                                id: '5.1.2', 
-                                code: '5.1.2', 
-                                term: 'Payment Management', 
-                                narrowerTerms: ['Payee Administration', 'Payment Scheduling', 'Payment Cancellations', 'Payment Disputes'], 
-                                monitors: ['bank', 'direct-bank', 'ccm', 'mobile'] 
-                            } 
-                        ] 
+                        term: 'Profile and Preferences', 
+                        definition: 'User-configurable settings for account management and communications', 
+                        narrowerTerms: ['Contact and Personal Information Management', 'Alert Management', 'eDelivery Management', 'Marketing Communications Management', 'Preferred Language Management', 'Beneficiary Management', 'Caregiver Management'], 
+                        relatedTerms: ['2.2 Initial Setup', '5.2 Security and Access'], 
+                        usedFor: ['Notification Settings', 'Alert Preferences'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.2', 
                         code: '5.2', 
-                        term: 'Investment Transactions', 
-                        definition: 'Securities trading and investment account transactions', 
-                        scopeNote: 'Covers all investment-related transactions. For payments, see 5.1 Payment Transactions.', 
-                        monitors: ['amm-inv', 'broker', 'automated-investing', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '5.2.1', 
-                                code: '5.2.1', 
-                                term: 'Trading Activities', 
-                                narrowerTerms: ['Stock Trading', 'Bond Trading', 'Mutual Fund Transactions', 'Options Trading', 'ETF Trading'], 
-                                usedFor: ['Securities Trading'], 
-                                monitors: ['broker', 'amm-inv', 'fintech'] 
-                            }, 
-                            { 
-                                id: '5.2.2', 
-                                code: '5.2.2', 
-                                term: 'Investment Account Movements', 
-                                narrowerTerms: ['Contributions', 'Distributions', 'Rollovers', 'Rebalancing', 'Asset Allocation Changes'], 
-                                monitors: ['amm-inv', 'rpm', 'automated-investing', 'workplace-finance'] 
-                            } 
-                        ] 
+                        term: 'Security and Access', 
+                        definition: 'Controls for authentication, authorization, and data protection', 
+                        narrowerTerms: ['Authentication Management', 'Credential Management', 'Device Access Management', 'Authorized User Management', 'Data Sharing Management', 'Linked Account Management', 'Fraud Monitoring Services'], 
+                        relatedTerms: ['5.1 Profile and Preferences', '8.1 Digital Channels'], 
+                        usedFor: ['MFA', '2FA', 'Biometrics', 'Passkeys', 'Hard and Soft Tokens', 'Third-Party Access Management', 'Authorized Cardholder Management', 'Additional Cardholder Management', 'Identity Protection Services', 'Security Settings', 'Privacy Settings'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.3', 
                         code: '5.3', 
-                        term: 'Account Transfers', 
-                        definition: 'Movement of funds between accounts and institutions', 
-                        scopeNote: 'All transfer types and fund movements. For rewards, see 5.3.3 Rewards Redemption.', 
-                        monitors: ['bank', 'direct-bank', 'ccm', 'mobile', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '5.3.1', 
-                                code: '5.3.1', 
-                                term: 'Transfer Types', 
-                                narrowerTerms: ['Internal Transfers', 'External Transfers', 'Wire Transfers', 'International Transfers'], 
-                                monitors: ['bank', 'direct-bank', 'mobile', 'fintech'] 
-                            }, 
-                            { 
-                                id: '5.3.2', 
-                                code: '5.3.2', 
-                                term: 'Deposit Services', 
-                                narrowerTerms: ['Direct Deposits', 'Mobile Check Deposits', 'Cash Deposits', 'Electronic Deposits'], 
-                                monitors: ['bank', 'direct-bank', 'mobile'] 
-                            }, 
-                            { 
-                                id: '5.3.3', 
-                                code: '5.3.3', 
-                                term: 'Rewards Redemption', 
-                                narrowerTerms: ['Points Redemption', 'Cash Back Processing', 'Travel Rewards Booking'], 
-                                relatedTerms: ['1.3.1 Relationship Building'], 
-                                monitors: ['ccm', 'bank'] 
-                            } 
-                        ] 
+                        term: 'Investment Account Servicing', 
+                        definition: 'Portfolio management and investor profile configuration for investment accounts', 
+                        narrowerTerms: ['Portfolio and Strategy Management', 'Investor Questionnaire', 'Investor Profile Management'], 
+                        relatedTerms: ['3.2 Investment Account Details', '6.4 Investment Transactions'], 
+                        usedFor: ['Portfolio Allocation Management', 'Portfolio Strategy Management', 'Tax Loss Harvesting Management', 'Stock Restriction Management', 'Personal Financial Details', 'Risk Tolerance Settings'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '5.4', 
+                        code: '5.4', 
+                        term: 'Card Servicing', 
+                        definition: 'Credit and debit card management functions', 
+                        narrowerTerms: ['Issue and Replace Cards', 'Lock and Freeze Cards', 'Digital Wallets and Virtual Cards', 'Card Limits', 'Disputes'], 
+                        relatedTerms: ['3.2 Credit Card Account Details', '5.4 Rewards'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '5.5', 
+                        code: '5.5', 
+                        term: 'Rewards', 
+                        definition: 'Programs that provide benefits based on account usage or relationship status', 
+                        narrowerTerms: ['Reward Portals', 'Reward Accrual', 'Reward Redemption', 'Merchant Offers', 'Relationship Tiers'], 
+                        relatedTerms: ['5.4 Card Servicing'], 
+                        usedFor: ['Points', 'Travel Booking', 'Cash Back'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '5.6', 
+                        code: '5.6', 
+                        term: 'Retirement Plan Administration', 
+                        definition: 'Plan sponsor tools for employer-sponsored retirement plan management', 
+                        narrowerTerms: ['Payroll Tools', 'Compliance and Fiduciary Resources', 'Plan Health Tools', 'Participant Search Tools', 'Participant Data and Management', 'Plan Data', 'Plan Rules and Design'], 
+                        relatedTerms: ['3.2 Retirement Account Details', '6.4 Investment Transactions'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '5.7', 
+                        code: '5.7', 
+                        term: 'Policy Servicing', 
+                        definition: 'Insurance policy maintenance and modification functions', 
+                        narrowerTerms: ['Policy Management', 'Coverage Changes', 'Policy Renewals'], 
+                        relatedTerms: ['3.2 Insurance Account Details', '5.8 Claim Servicing'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '5.8', 
+                        code: '5.8', 
+                        term: 'Claim Servicing', 
+                        definition: 'SN: Claims filing, tracking, and resolution processes', 
+                        narrowerTerms: ['Claim Submission', 'Claim History', 'Claim Disputes'], 
+                        relatedTerms: ['5.7 Policy Servicing', '6.1 Payments'], 
+                        usedFor: ['Claims', 'Claim Processing', 'Claim Status Tracking'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '5.9', 
+                        code: '5.9', 
+                        term: 'Care Coordination', 
+                        definition: 'Healthcare service management and provider relationship activities', 
+                        narrowerTerms: ['EHR Platforms', 'Provider Networks', 'Care Plan Management', 'Treatment Authorization'], 
+                        relatedTerms: ['3.2 Health Plan Account Details', '5.10 Prescription Management', '7.2 Contact Resources'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '5.10', 
+                        code: '5.10', 
+                        term: 'Prescription Management', 
+                        definition: 'Medication ordering, cost analysis, and coverage verification', 
+                        narrowerTerms: ['Prescription Orders and Refills', 'Coverage Verification', 'Specialty Drug Programs', 'Drug Cost Tools'], 
+                        relatedTerms: ['5.9 Care Coordination', '6.1 Payments'], 
+                        usedFor: ['Medication Management'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
             { 
                 id: '6', 
                 code: '6.0', 
-                term: 'Customer Support', 
-                definition: 'Help and assistance services for customers', 
-                scopeNote: 'Includes both self-service and assisted support. For system issues, see 7.1 Security Operations.', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'mobile', 'crisis-comms'], 
+                term: 'Transactions And Money Movement', 
+                definition: 'Payment processing and fund transfers', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '6.1', 
                         code: '6.1', 
-                        term: 'Self-service Support', 
-                        definition: 'Customer-initiated help resources', 
-                        scopeNote: 'Covers all self-help options. For assisted support, see 6.2 Professional Support.', 
-                        monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'ccm', 'health-plan', 'mobile', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '6.1.1', 
-                                code: '6.1.1', 
-                                term: 'Help Resources', 
-                                narrowerTerms: ['Help Centers', 'FAQs', 'Video Tutorials', 'Knowledge Bases'], 
-                                relatedTerms: ['4.2.1 Automated Assistance'], 
-                                monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'ccm', 'health-plan', 'mobile'] 
-                            }, 
-                            { 
-                                id: '6.1.2', 
-                                code: '6.1.2', 
-                                term: 'Feedback Mechanisms', 
-                                narrowerTerms: ['Surveys', 'Feedback Forms', 'Ratings Systems', 'Suggestion Boxes'], 
-                                usedFor: ['Customer Feedback'], 
-                                monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan'] 
-                            } 
-                        ] 
+                        term: 'Payments', 
+                        definition: 'Outgoing payment processing for bills, premiums, and obligations', 
+                        narrowerTerms: ['Bill Pay', 'P2P Payments', 'Credit Card Payments', 'Loan Payments', 'Premium Payments', 'Claim Payments', 'Buy-Now-Pay-Later Payments'], 
+                        relatedTerms: ['6.2 Transfers', '6.4 Investment Transactions'], 
+                        usedFor: ['Post-Purchase Installment Plans', 'BNPL', 'Scheduled Payments', 'Payment Processing'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '6.2', 
                         code: '6.2', 
-                        term: 'Professional Support', 
-                        definition: 'Staff-assisted customer service', 
-                        scopeNote: 'Includes all human support channels. For self-service, see 6.1 Self-service Support.', 
-                        monitors: ['bank', 'amm-adv', 'life', 'health-system', 'medicare', 'pharmacy', 'crisis-comms'], 
-                        children: [ 
-                            { 
-                                id: '6.2.1', 
-                                code: '6.2.1', 
-                                term: 'Support Channels', 
-                                narrowerTerms: ['Phone Support', 'Live Chat', 'Secure Messaging', 'Video Support', 'Email Support'], 
-                                monitors: ['bank', 'amm-adv', 'life', 'health-plan', 'health-system', 'crisis-comms'] 
-                            }, 
-                            { 
-                                id: '6.2.2', 
-                                code: '6.2.2', 
-                                term: 'Advisory Services', 
-                                narrowerTerms: ['Financial Advisors', 'Insurance Agents', 'Wellness Coaches', 'Investment Consultants'], 
-                                monitors: ['amm-adv', 'life', 'health-system', 'workplace-finance'] 
-                            } 
-                        ] 
+                        term: 'Transfers', 
+                        definition: 'Movement of funds between accounts', 
+                        narrowerTerms: ['Wire Transfers', 'Internal Transfers', 'External Transfers'], 
+                        relatedTerms: ['6.1 Payments', '6.3 Deposits'], 
+                        usedFor: ['Money Movement'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '6.3', 
+                        code: '6.3', 
+                        term: 'Deposits', 
+                        definition: 'Incoming funds to accounts', 
+                        narrowerTerms: ['Direct Deposit', 'Check Deposit', 'Overdraft Services'], 
+                        relatedTerms: ['6.2 Transfers', '3.2 Bank Account Details'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                    }, 
+                    { 
+                        id: '6.4', 
+                        code: '6.4', 
+                        term: 'Investment Transactions', 
+                        definition: 'Buy, sell, and portfolio management transactions for investment accounts', 
+                        narrowerTerms: ['Trading', 'Contribution Management', 'Investment Allocation Management', 'Money Out'], 
+                        relatedTerms: ['3.2 Investment Account Details', '5.3 Investment Account Servicing'], 
+                        usedFor: ['Salary Deferral Management', 'Contribution Rate Management', 'Contributions', 'Future Contribution Management', 'Automatic Rebalancing', 'Current Allocation Management: Rebalances', 'Rebalances', 'Reallocations', 'Fund Exchanges', 'Loans (entry term)', 'Rollovers (entry term)', 'Withdrawals (entry term)', 'Distributions (entry term)'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
             { 
                 id: '7', 
                 code: '7.0', 
-                term: 'Compliance and Security', 
-                definition: 'Regulatory compliance and security operations', 
-                scopeNote: 'System-level security and compliance functions. For customer security settings, see 2.2 Security Administration.', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech'], 
+                term: 'Customer Support', 
+                definition: 'Help and issue resolution', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '7.1', 
                         code: '7.1', 
-                        term: 'Security Operations', 
-                        definition: 'System security monitoring and threat management', 
-                        scopeNote: 'Enterprise security functions. For customer authentication, see 2.2.1 Authentication Management.', 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'fintech'], 
-                        children: [ 
-                            { 
-                                id: '7.1.1', 
-                                code: '7.1.1', 
-                                term: 'Security Monitoring', 
-                                narrowerTerms: ['Fraud Detection', 'Transaction Monitoring', 'Identity Protection', 'Threat Detection'], 
-                                relatedTerms: ['2.2.1 Authentication Management'], 
-                                monitors: ['bank', 'amm-inv', 'broker', 'direct-bank', 'ccm', 'fintech'] 
-                            }, 
-                            { 
-                                id: '7.1.2', 
-                                code: '7.1.2', 
-                                term: 'Security Controls', 
-                                narrowerTerms: ['Data Encryption', 'Access Logging', 'Security Auditing', 'Incident Response'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'fintech'] 
-                            } 
-                        ] 
+                        term: 'Help Resources', 
+                        definition: 'Self-service information and instructional content', 
+                        narrowerTerms: ['Help Center', 'FAQs', 'Demos and Tutorials', 'Contextual Help'], 
+                        relatedTerms: ['7.2 Contact Resources', '4.1 Research and Education'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '7.2', 
                         code: '7.2', 
-                        term: 'Regulatory Compliance', 
-                        definition: 'Adherence to financial services regulations and requirements', 
-                        scopeNote: 'All regulatory compliance activities. For disclosures, see 7.2.1 Required Disclosures.', 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'life', 'health-plan', 'health-system', 'medicare', 'pharmacy'], 
-                        children: [ 
-                            { 
-                                id: '7.2.1', 
-                                code: '7.2.1', 
-                                term: 'Required Disclosures', 
-                                narrowerTerms: ['Privacy Notices', 'Terms and Conditions', 'Fee Disclosures', 'Regulatory Disclosures'], 
-                                relatedTerms: ['2.3.3 Documents and Statements'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'life', 'health-plan', 'medicare'] 
-                            }, 
-                            { 
-                                id: '7.2.2', 
-                                code: '7.2.2', 
-                                term: 'Compliance Processes', 
-                                narrowerTerms: ['Audit Documentation', 'Regulatory Reporting', 'Consent Management', 'Data Retention'], 
-                                relatedTerms: ['1.2.1 Account Opening'], 
-                                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'life', 'health-plan', 'health-system'] 
-                            } 
-                        ] 
+                        term: 'Contact Resources', 
+                        definition: 'Human and automated assistance channels for customer inquiries', 
+                        narrowerTerms: ['Virtual Assistants', 'Live Chat', 'Phone Support', 'Cobrowsing', 'Secure Messaging', 'Appointment Scheduling', 'Telehealth Services', 'Customer Feedback', 'Advisory and Coaching Services', 'Locator Tools'], 
+                        relatedTerms: ['7.1 Help Resources', '8.1 Digital Channels', '8.1 Digital Channels'], 
+                        usedFor: ['VA', 'Chatbot', 'Screensharing', 'Financial Professional Locator Tools', 'Branch Locator Tools', 'ATM Locator Tools', 'Provider Locator Tools', 'Cost Estimator Tools', 'Agent Locator Tools'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
             { 
                 id: '8', 
                 code: '8.0', 
-                term: 'Product-Specific Services', 
-                definition: 'Features unique to specific financial products', 
-                scopeNote: 'Specialized services by product type. For general features, see relevant sections above.', 
-                monitors: ['life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'ccm', 'lending', 'amm-inv', 'amm-adv', 'rpm'], 
+                term: 'Digital Experience', 
+                definition: 'User interface and innovation features', 
+                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'], 
                 children: [ 
                     { 
                         id: '8.1', 
                         code: '8.1', 
-                        term: 'Insurance Services', 
-                        definition: 'Insurance-specific features and processes', 
-                        scopeNote: 'Covers all insurance product types. For general account features, see 2.0 Account Management.', 
-                        monitors: ['life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system'], 
-                        children: [ 
-                            { 
-                                id: '8.1.1', 
-                                code: '8.1.1', 
-                                term: 'Policy Administration', 
-                                narrowerTerms: ['Policy Management', 'Coverage Modifications', 'Policy Renewals', 'Rider Management'], 
-                                monitors: ['life', 'p2c', 'commercial-insurance'] 
-                            }, 
-                            { 
-                                id: '8.1.2', 
-                                code: '8.1.2', 
-                                term: 'Claims Processing', 
-                                narrowerTerms: ['Claims Submission', 'Claims Tracking', 'Claims Appeals', 'Claims History'], 
-                                usedFor: ['Claims Management'], 
-                                monitors: ['life', 'p2c', 'commercial-insurance', 'health-plan'] 
-                            }, 
-                            { 
-                                id: '8.1.3', 
-                                code: '8.1.3', 
-                                term: 'Health Services', 
-                                narrowerTerms: ['Provider Networks', 'Prescription Management', 'Telehealth Services', 'Care Coordination', 'Medical Records Access'], 
-                                monitors: ['health-plan', 'health-system', 'medicare', 'pharmacy'] 
-                            } 
-                        ] 
+                        term: 'Digital Channels', 
+                        definition: 'Channels and technologies for accessing financial services', 
+                        narrowerTerms: ['Mobile Apps', 'Desktop Sites', 'Mobile Browsers', 'Social Media Platforms', 'Smart Devices', 'Artificial Intelligence'], 
+                        relatedTerms: ['1.0 Customer Acquisition', '5.2 Security and Access', '7.2 Contact Resources'], 
+                        usedFor: ['AI'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'] 
                     }, 
                     { 
                         id: '8.2', 
                         code: '8.2', 
-                        term: 'Banking Services', 
-                        definition: 'Banking-specific features', 
-                        scopeNote: 'Covers checking, savings, and credit products. For general features, see relevant sections.', 
-                        monitors: ['bank', 'direct-bank', 'ccm', 'lending', 'sbbm'], 
-                        children: [ 
-                            { 
-                                id: '8.2.1', 
-                                code: '8.2.1', 
-                                term: 'Card Services', 
-                                narrowerTerms: ['Card Management', 'Digital Wallets', 'Card Controls', 'Virtual Cards'], 
-                                monitors: ['bank', 'direct-bank', 'ccm'] 
-                            }, 
-                            { 
-                                id: '8.2.2', 
-                                code: '8.2.2', 
-                                term: 'Lending Services', 
-                                narrowerTerms: ['Loan Applications', 'Loan Management', 'Mortgage Services', 'Credit Line Management'], 
-                                monitors: ['bank', 'lending', 'sbbm'] 
-                            } 
-                        ] 
-                    }, 
-                    { 
-                        id: '8.3', 
-                        code: '8.3', 
-                        term: 'Investment Services', 
-                        definition: 'Investment management and advisory-specific features', 
-                        scopeNote: 'Specialized investment services. For general investment features, see 5.2 Investment Transactions.', 
-                        monitors: ['amm-inv', 'amm-adv', 'rpm', 'broker', 'automated-investing'], 
-                        children: [ 
-                            { 
-                                id: '8.3.1', 
-                                code: '8.3.1', 
-                                term: 'Portfolio Services', 
-                                narrowerTerms: ['Asset Allocation', 'Performance Reporting', 'Tax Optimization', 'Risk Analysis'], 
-                                monitors: ['amm-inv', 'amm-adv', 'rpm', 'automated-investing'] 
-                            }, 
-                            { 
-                                id: '8.3.2', 
-                                code: '8.3.2', 
-                                term: 'Research Services', 
-                                narrowerTerms: ['Watchlists', 'Investment Alerts', 'Research Reports', 'Market Data'], 
-                                monitors: ['amm-inv', 'amm-adv', 'broker'] 
-                            } 
-                        ] 
+                        term: 'User Interface', 
+                        definition: 'Design elements and navigation patterns for digital interactions', 
+                        narrowerTerms: ['Navigation', 'Search', 'Accessibility', 'Design', 'Login Process', 'Personalization'], 
+                        relatedTerms: ['3.1 Account Summary Views'], 
+                        usedFor: ['Advisor Dashboard Personalization'], 
+                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'] 
                     } 
                 ] 
             } 
@@ -2688,7 +2430,7 @@ React.createElement('svg', {
 ),
                                 React.createElement('div', {}, 
                                     React.createElement('h1', { className: "text-2xl font-bold text-gray-900" }, "Corporate Insight Taxonomy System"), 
-React.createElement('p', { className: "text-sm", style: { color: colors.storm } }, "ISO 25964-1:2011 Compliant • Document Management Team") 
+React.createElement('p', { className: "text-sm", style: { color: colors.storm } }, "ISO 25964-1:2011 Compliant â€¢ Document Management Team") 
                                 ) 
                             ), 
                             React.createElement('div', { className: "flex items-center space-x-3" }, 
@@ -2946,7 +2688,7 @@ React.createElement(FileText, { size: 20, className: "mr-2", color: colors.navy 
                                         React.createElement('div', { className: "flex-1" },
                                             React.createElement('p', { className: "font-medium text-gray-900" }, uploadedFile.name),
                                             React.createElement('p', { className: "text-sm text-gray-600" }, 
-                                                `${(uploadedFile.size / 1024).toFixed(1)} KB • ${uploadedFile.type || 'Unknown type'}`
+                                                `${(uploadedFile.size / 1024).toFixed(1)} KB â€¢ ${uploadedFile.type || 'Unknown type'}`
                                             )
                                         ),
                                         React.createElement('button', {
