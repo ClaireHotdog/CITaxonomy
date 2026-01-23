@@ -144,24 +144,24 @@ color: white;
             display: inline-block; 
         } 
          
-        .tooltip .tooltiptext { 
-            visibility: hidden; 
-            width: 300px; 
-background-color: #1D2851; 
-color: #fff; 
-            text-align: left; 
-            border-radius: 6px; 
-            padding: 12px; 
-            position: absolute; 
-            z-index: 1000; 
-            bottom: 125%; 
-            left: 50%; 
-            margin-left: -150px; 
-            opacity: 0; 
-            transition: opacity 0.3s; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
-            font-size: 13px; 
-            line-height: 1.5; 
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+background-color: #1D2851;
+color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 12px;
+            position: fixed;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 13px;
+            line-height: 1.5;
+            pointer-events: none;
+            transform: translate(-50%, -100%);
+            margin-top: -10px;
         } 
          
         .tooltip:hover .tooltiptext { 
@@ -169,15 +169,15 @@ color: #fff;
             opacity: 1; 
         } 
          
-        .tooltip .tooltiptext::after { 
-            content: ""; 
-            position: absolute; 
-            top: 100%; 
-            left: 50%; 
-            margin-left: -5px; 
-            border-width: 5px; 
-            border-style: solid; 
-border-color: #1D2851 transparent transparent transparent; 
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+border-color: #1D2851 transparent transparent transparent;
         } 
          
         /* Theme toggle styles */ 
@@ -486,27 +486,27 @@ stroke: color,
                 code: '1.0', 
                 term: 'Customer Acquisition', 
                 definition: 'Marketing and lead generation activities', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing'], 
-                children: [ 
-                    { 
-                        id: '1.0.1', 
-                        code: '1.0.1', 
-                        term: 'Public-Facing Resources', 
-                        definition: 'Resources accessible to prospective customers before account opening', 
-                        narrowerTerms: ['Public Homepages', 'Education and Thought Leadership', 'Firm and Contact Information', 'Product and Service Information'], 
-                        relatedTerms: ['1.2 Lead Generation'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing'] 
-                    }, 
-                    { 
-                        id: '1.0.2', 
-                        code: '1.0.2', 
-                        term: 'Lead Generation', 
-                        definition: 'Tools and content designed to convert prospects into applicants', 
-                        narrowerTerms: ['Marketing Content', 'Offers and Bonuses', 'Quote Tools', 'Coverage Tools', 'Product Selection and Comparison Tools'], 
-                        relatedTerms: ['1.1 Public-Facing Resources', '2.0 Customer Onboarding'], 
-                        usedFor: ['Pre-Qualification', 'Referral Programs'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing'] 
-                    } 
+                monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing'], 
+                children: [
+                    {
+                        id: '1.1',
+                        code: '1.1',
+                        term: 'Public-Facing Resources',
+                        definition: 'Resources accessible to prospective customers before account opening',
+                        narrowerTerms: ['Public Homepages', 'Education and Thought Leadership', 'Firm and Contact Information', 'Product and Service Information'],
+                        relatedTerms: ['1.2 Lead Generation'],
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing']
+                    },
+                    {
+                        id: '1.2',
+                        code: '1.2',
+                        term: 'Lead Generation',
+                        definition: 'Tools and content designed to convert prospects into applicants',
+                        narrowerTerms: ['Marketing Content', 'Offers and Bonuses', 'Quote Tools', 'Coverage Tools', 'Product Selection and Comparison Tools'],
+                        relatedTerms: ['1.1 Public-Facing Resources', '2.0 Customer Onboarding'],
+                        usedFor: ['Pre-Qualification', 'Referral Programs'],
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'fintech', 'automated-investing']
+                    }
                 ] 
             }, 
             { 
@@ -514,7 +514,7 @@ stroke: color,
                 code: '2.0', 
                 term: 'Customer Onboarding', 
                 definition: 'New account setup and initial configuration', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'], 
+                monitors: ['bank', 'amm-adv', 'broker', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'], 
                 children: [ 
                     { 
                         id: '2.1', 
@@ -524,7 +524,7 @@ stroke: color,
                         narrowerTerms: ['Application Forms', 'Application Processing'], 
                         relatedTerms: ['2.2 Initial Setup'], 
                         usedFor: ['Identity Verification', 'Document Collection', 'Initial Funding'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'] 
                     }, 
                     { 
                         id: '2.2', 
@@ -533,7 +533,7 @@ stroke: color,
                         definition: 'Configuration activities following account approval', 
                         narrowerTerms: ['Profile Creation', 'Preference Setup', 'Onboarding Experience'], 
                         relatedTerms: ['2.1 Account Opening', '5.1 Profile and Preferences'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'life', 'health-plan', 'rpm', 'annuity', 'fintech'] 
                     } 
                 ] 
             }, 
@@ -542,7 +542,7 @@ stroke: color,
                 code: '3.0', 
                 term: 'Account Information', 
                 definition: 'Account data display and financial analysis', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'], 
+                monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '3.1', 
@@ -551,7 +551,7 @@ stroke: color,
                         definition: 'High-level aggregated views of account holdings and status', 
                         narrowerTerms: ['Website Homepages and Dashboards', 'Mobile Home Screens and Dashboards', 'Account Aggregation', 'Account Integration', 'Authorized User Views', 'Display Customization'], 
                         relatedTerms: ['3.2 Account Details', '8.2 User Interface'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '3.2', 
@@ -561,7 +561,7 @@ stroke: color,
                         narrowerTerms: ['Account Activity', 'Investment Account Details', 'Bank Account Details', 'Credit Card Account Details', 'Retirement Account Details', 'Insurance Account Details', 'Annuity Contract Details', 'Loan Account Details', 'Health Plan Account Details'], 
                         relatedTerms: ['3.1 Account Summary Views', '3.3 Account Documents', '6.0 Transactions and Money Movement'], 
                         usedFor: ['Transaction history', 'Payment history', 'Transfer history', 'Contribution history', 'Investment Holdings', 'Performance Data', 'Portfolio Analysis', 'Realized Gain/Loss Reporting', 'Investment Balances', 'Fund Options', 'Subaccounts', 'Home policy details', 'Auto policy details', 'Life insurance policy details', 'Auto loan details', 'Home loan details', 'Escrow information', 'Amortization information', 'Coverage and Benefit Details', 'Medical Records', 'Test Results', 'Treatment History', 'Health Metrics'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '3.3', 
@@ -569,9 +569,9 @@ stroke: color,
                         term: 'Account Documents', 
                         definition: 'Downloadable statements, forms, and regulatory documentation', 
                         narrowerTerms: ['Document Center', 'Statements', 'Disclosures and Notices', 'Proof of Insurance', 'Prospectuses', 'Forms', 'Tax Documents'], 
-                        relatedTerms: ['3.2 Account Details', '5.1 eDelivery Management'], 
+                        relatedTerms: ['3.2 Account Details', '5.1 Profile and Preferences'], 
                         usedFor: ['Audit Documentation (entry term)', 'Regulatory Reporting (entry term)'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'health-system', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
@@ -580,7 +580,7 @@ stroke: color,
                 code: '4.0', 
                 term: 'Planning And Education', 
                 definition: 'Tools and resources to support financial decision-making and knowledge development', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'], 
+                monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'], 
                 children: [ 
                     { 
                         id: '4.1', 
@@ -590,7 +590,7 @@ stroke: color,
                         narrowerTerms: ['Market and Investment Research', 'Financial Education', 'Health and Safety Education', 'Cybersecurity Education'], 
                         relatedTerms: ['4.2 Planning Tools', '4.3 Advisor Education and Tools'], 
                         usedFor: ['Investment Screeners', 'Quotes', 'Watchlists', 'Investment Alerts', 'Fund Profiles', 'Fund Comparison Tools', 'Literature Center', 'Health Assessment', 'Mental Health', 'Symptom Checker', 'Property Protection Education', 'Identity Protection Education', 'Scam Awareness Education', 'Fraud Prevention Education', 'Educational Content'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
                     }, 
                     { 
                         id: '4.2', 
@@ -600,7 +600,7 @@ stroke: color,
                         narrowerTerms: ['Budgeting Tools', 'Spending Analysis Tools', 'Savings Tools', 'Retirement Planning Tools', 'Goal Planning Tools', 'Financial Wellness Tools'], 
                         relatedTerms: ['4.1 Research and Education', '6.0 Transactions and Money Movement'], 
                         usedFor: ['Planning Calculators'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
                     }, 
                     { 
                         id: '4.3', 
@@ -609,7 +609,7 @@ stroke: color,
                         definition: 'Professional development resources and practice management tools for financial advisors', 
                         narrowerTerms: ['CE Platforms', 'Practice Management Resources', 'Portfolio Construction and Analysis Tools', 'Hypothetical Tools', 'Illustration Tools'], 
                         relatedTerms: ['4.1 Research and Education', '4.2 Planning Tools'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'ccm', 'direct-bank', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'life', 'health-plan', 'rpm', 'annuity', 'automated-investing', 'fintech'] 
                     } 
                 ] 
             }, 
@@ -618,7 +618,7 @@ stroke: color,
                 code: '5.0', 
                 term: 'Account Servicing', 
                 definition: 'Ongoing account maintenance and product administration', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'], 
+                monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '5.1', 
@@ -628,7 +628,7 @@ stroke: color,
                         narrowerTerms: ['Contact and Personal Information Management', 'Alert Management', 'eDelivery Management', 'Marketing Communications Management', 'Preferred Language Management', 'Beneficiary Management', 'Caregiver Management'], 
                         relatedTerms: ['2.2 Initial Setup', '5.2 Security and Access'], 
                         usedFor: ['Notification Settings', 'Alert Preferences'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.2', 
@@ -638,7 +638,7 @@ stroke: color,
                         narrowerTerms: ['Authentication Management', 'Credential Management', 'Device Access Management', 'Authorized User Management', 'Data Sharing Management', 'Linked Account Management', 'Fraud Monitoring Services'], 
                         relatedTerms: ['5.1 Profile and Preferences', '8.1 Digital Channels'], 
                         usedFor: ['MFA', '2FA', 'Biometrics', 'Passkeys', 'Hard and Soft Tokens', 'Third-Party Access Management', 'Authorized Cardholder Management', 'Additional Cardholder Management', 'Identity Protection Services', 'Security Settings', 'Privacy Settings'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.3', 
@@ -646,9 +646,9 @@ stroke: color,
                         term: 'Investment Account Servicing', 
                         definition: 'Portfolio management and investor profile configuration for investment accounts', 
                         narrowerTerms: ['Portfolio and Strategy Management', 'Investor Questionnaire', 'Investor Profile Management'], 
-                        relatedTerms: ['3.2 Investment Account Details', '6.4 Investment Transactions'], 
+                        relatedTerms: ['6.4 Investment Transactions'], 
                         usedFor: ['Portfolio Allocation Management', 'Portfolio Strategy Management', 'Tax Loss Harvesting Management', 'Stock Restriction Management', 'Personal Financial Details', 'Risk Tolerance Settings'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.4', 
@@ -656,8 +656,8 @@ stroke: color,
                         term: 'Card Servicing', 
                         definition: 'Credit and debit card management functions', 
                         narrowerTerms: ['Issue and Replace Cards', 'Lock and Freeze Cards', 'Digital Wallets and Virtual Cards', 'Card Limits', 'Disputes'], 
-                        relatedTerms: ['3.2 Credit Card Account Details', '5.4 Rewards'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        relatedTerms: ['5.5 Rewards'], 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.5', 
@@ -667,7 +667,7 @@ stroke: color,
                         narrowerTerms: ['Reward Portals', 'Reward Accrual', 'Reward Redemption', 'Merchant Offers', 'Relationship Tiers'], 
                         relatedTerms: ['5.4 Card Servicing'], 
                         usedFor: ['Points', 'Travel Booking', 'Cash Back'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.6', 
@@ -675,8 +675,8 @@ stroke: color,
                         term: 'Retirement Plan Administration', 
                         definition: 'Plan sponsor tools for employer-sponsored retirement plan management', 
                         narrowerTerms: ['Payroll Tools', 'Compliance and Fiduciary Resources', 'Plan Health Tools', 'Participant Search Tools', 'Participant Data and Management', 'Plan Data', 'Plan Rules and Design'], 
-                        relatedTerms: ['3.2 Retirement Account Details', '6.4 Investment Transactions'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        relatedTerms: ['6.4 Investment Transactions'], 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.7', 
@@ -684,8 +684,8 @@ stroke: color,
                         term: 'Policy Servicing', 
                         definition: 'Insurance policy maintenance and modification functions', 
                         narrowerTerms: ['Policy Management', 'Coverage Changes', 'Policy Renewals'], 
-                        relatedTerms: ['3.2 Insurance Account Details', '5.8 Claim Servicing'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        relatedTerms: ['5.8 Claim Servicing'], 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.8', 
@@ -695,7 +695,7 @@ stroke: color,
                         narrowerTerms: ['Claim Submission', 'Claim History', 'Claim Disputes'], 
                         relatedTerms: ['5.7 Policy Servicing', '6.1 Payments'], 
                         usedFor: ['Claims', 'Claim Processing', 'Claim Status Tracking'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.9', 
@@ -703,8 +703,8 @@ stroke: color,
                         term: 'Care Coordination', 
                         definition: 'Healthcare service management and provider relationship activities', 
                         narrowerTerms: ['EHR Platforms', 'Provider Networks', 'Care Plan Management', 'Treatment Authorization'], 
-                        relatedTerms: ['3.2 Health Plan Account Details', '5.10 Prescription Management', '7.2 Contact Resources'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        relatedTerms: ['5.10 Prescription Management', '7.2 Contact Resources'], 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '5.10', 
@@ -714,7 +714,7 @@ stroke: color,
                         narrowerTerms: ['Prescription Orders and Refills', 'Coverage Verification', 'Specialty Drug Programs', 'Drug Cost Tools'], 
                         relatedTerms: ['5.9 Care Coordination', '6.1 Payments'], 
                         usedFor: ['Medication Management'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'rpm', 'pharmacy', 'annuity', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
@@ -723,7 +723,7 @@ stroke: color,
                 code: '6.0', 
                 term: 'Transactions And Money Movement', 
                 definition: 'Payment processing and fund transfers', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'], 
+                monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '6.1', 
@@ -733,7 +733,7 @@ stroke: color,
                         narrowerTerms: ['Bill Pay', 'P2P Payments', 'Credit Card Payments', 'Loan Payments', 'Premium Payments', 'Claim Payments', 'Buy-Now-Pay-Later Payments'], 
                         relatedTerms: ['6.2 Transfers', '6.4 Investment Transactions'], 
                         usedFor: ['Post-Purchase Installment Plans', 'BNPL', 'Scheduled Payments', 'Payment Processing'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '6.2', 
@@ -743,7 +743,7 @@ stroke: color,
                         narrowerTerms: ['Wire Transfers', 'Internal Transfers', 'External Transfers'], 
                         relatedTerms: ['6.1 Payments', '6.3 Deposits'], 
                         usedFor: ['Money Movement'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '6.3', 
@@ -751,8 +751,8 @@ stroke: color,
                         term: 'Deposits', 
                         definition: 'Incoming funds to accounts', 
                         narrowerTerms: ['Direct Deposit', 'Check Deposit', 'Overdraft Services'], 
-                        relatedTerms: ['6.2 Transfers', '3.2 Bank Account Details'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                        relatedTerms: ['6.2 Transfers'], 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '6.4', 
@@ -760,9 +760,9 @@ stroke: color,
                         term: 'Investment Transactions', 
                         definition: 'Buy, sell, and portfolio management transactions for investment accounts', 
                         narrowerTerms: ['Trading', 'Contribution Management', 'Investment Allocation Management', 'Money Out'], 
-                        relatedTerms: ['3.2 Investment Account Details', '5.3 Investment Account Servicing'], 
+                        relatedTerms: ['5.3 Investment Account Servicing'], 
                         usedFor: ['Salary Deferral Management', 'Contribution Rate Management', 'Contributions', 'Future Contribution Management', 'Automatic Rebalancing', 'Current Allocation Management: Rebalances', 'Rebalances', 'Reallocations', 'Fund Exchanges', 'Loans (entry term)', 'Rollovers (entry term)', 'Withdrawals (entry term)', 'Distributions (entry term)'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'rpm', 'annuity', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
@@ -771,7 +771,7 @@ stroke: color,
                 code: '7.0', 
                 term: 'Customer Support', 
                 definition: 'Help and issue resolution', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'], 
+                monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'], 
                 children: [ 
                     { 
                         id: '7.1', 
@@ -780,7 +780,7 @@ stroke: color,
                         definition: 'Self-service information and instructional content', 
                         narrowerTerms: ['Help Center', 'FAQs', 'Demos and Tutorials', 'Contextual Help'], 
                         relatedTerms: ['7.2 Contact Resources', '4.1 Research and Education'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'] 
                     }, 
                     { 
                         id: '7.2', 
@@ -790,7 +790,7 @@ stroke: color,
                         narrowerTerms: ['Virtual Assistants', 'Live Chat', 'Phone Support', 'Cobrowsing', 'Secure Messaging', 'Appointment Scheduling', 'Telehealth Services', 'Customer Feedback', 'Advisory and Coaching Services', 'Locator Tools'], 
                         relatedTerms: ['7.1 Help Resources', '8.1 Digital Channels', '8.1 Digital Channels'], 
                         usedFor: ['VA', 'Chatbot', 'Screensharing', 'Financial Professional Locator Tools', 'Branch Locator Tools', 'ATM Locator Tools', 'Provider Locator Tools', 'Cost Estimator Tools', 'Agent Locator Tools'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'commercial-insurance', 'health-plan', 'health-system', 'medicare', 'pharmacy', 'fintech', 'mobile'] 
                     } 
                 ] 
             }, 
@@ -799,7 +799,7 @@ stroke: color,
                 code: '8.0', 
                 term: 'Digital Experience', 
                 definition: 'User interface and innovation features', 
-                monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'], 
+                monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'], 
                 children: [ 
                     { 
                         id: '8.1', 
@@ -809,7 +809,7 @@ stroke: color,
                         narrowerTerms: ['Mobile Apps', 'Desktop Sites', 'Mobile Browsers', 'Social Media Platforms', 'Smart Devices', 'Artificial Intelligence'], 
                         relatedTerms: ['1.0 Customer Acquisition', '5.2 Security and Access', '7.2 Contact Resources'], 
                         usedFor: ['AI'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'] 
                     }, 
                     { 
                         id: '8.2', 
@@ -819,7 +819,7 @@ stroke: color,
                         narrowerTerms: ['Navigation', 'Search', 'Accessibility', 'Design', 'Login Process', 'Personalization'], 
                         relatedTerms: ['3.1 Account Summary Views'], 
                         usedFor: ['Advisor Dashboard Personalization'], 
-                        monitors: ['bank', 'amm-inv', 'amm-adv', 'broker', 'direct-bank', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'] 
+                        monitors: ['bank', 'amm-adv', 'broker', 'ccm', 'lending', 'life', 'p2c', 'health-plan', 'medicare', 'fintech', 'mobile', 'sbbm'] 
                     } 
                 ] 
             } 
@@ -828,952 +828,805 @@ stroke: color,
         // Narrower Terms definitions (simplified for space - keeping key ones) 
         const narrowerTermDefinitions = { 
     'Public Homepages': { 
-        definition: 'Primary website entry points designed for public access and engagement', 
-        relatedTerms: ['Marketing Communications', 'Web Applications'], 
+        definition: 'Primary website entry points designed for public access and engagement',
+        relatedTerms: ['8.1 Digital Channels', '1.2 Lead Generation'], 
         usedFor: ['Company Websites', 'Landing Pages'] 
     }, 
     'Social Media Presence': { 
-        definition: 'Company representation and engagement across social media platforms', 
-        relatedTerms: ['Marketing Communications', 'Customer Acquisition'], 
+        definition: 'Company representation and engagement across social media platforms',
+        relatedTerms: ['8.1 Digital Channels', '1.2 Lead Generation'], 
         usedFor: ['Brand Awareness', 'Customer Outreach'] 
     }, 
     'Email Campaigns': { 
-        definition: 'Targeted email communications for marketing and customer engagement', 
-        relatedTerms: ['Marketing Communications', 'Communication Preferences'], 
+        definition: 'Targeted email communications for marketing and customer engagement',
+        relatedTerms: ['1.2 Lead Generation', '5.1 Profile and Preferences'], 
         usedFor: ['Newsletter Campaigns', 'Promotional Emails'] 
     }, 
     'Educational Content': { 
-        definition: 'Learning materials and informational resources for customer education', 
-        relatedTerms: ['Financial Education Resources', 'Educational Resources'], 
+        definition: 'Learning materials and informational resources for customer education',
+        relatedTerms: ['4.1 Research and Education', '1.1 Public-Facing Resources'], 
         usedFor: ['Learning Materials', 'Informational Content'] 
     }, 
     'Thought Leadership Materials': { 
-        definition: 'Expert insights and industry analysis to establish authority', 
-        relatedTerms: ['Market Research Resources', 'Marketing Communications'], 
+        definition: 'Expert insights and industry analysis to establish authority',
+        relatedTerms: ['4.1 Research and Education', '1.1 Public-Facing Resources'], 
         usedFor: ['Industry Reports', 'Expert Commentary'] 
     }, 
  
     // Lead Generation Tools NTs 
     'Quote Calculators': { 
-        definition: 'Interactive tools for generating price estimates and quotes', 
-        relatedTerms: ['Lead Generation Tools', 'Planning Calculators'], 
+        definition: 'Interactive tools for generating price estimates and quotes',
+        relatedTerms: ['4.2 Planning Tools', '1.2 Lead Generation'], 
         usedFor: ['Price Estimators', 'Cost Calculators'] 
     }, 
     'Product Selectors': { 
-        definition: 'Tools to help customers choose appropriate products or services', 
-        relatedTerms: ['Lead Generation Tools', 'Automated Recommendations'], 
+        definition: 'Tools to help customers choose appropriate products or services',
+        relatedTerms: ['4.2 Planning Tools', '1.2 Lead Generation'], 
         usedFor: ['Product Finders', 'Recommendation Engines'] 
     }, 
     'Comparison Tools': { 
-        definition: 'Features enabling side-by-side product or service comparisons', 
-        relatedTerms: ['Lead Generation Tools', 'Investment Analysis Tools'], 
+        definition: 'Features enabling side-by-side product or service comparisons',
+        relatedTerms: ['4.2 Planning Tools', '1.2 Lead Generation'], 
         usedFor: ['Feature Comparisons', 'Competitive Analysis'] 
     }, 
     'Pre-qualification Forms': { 
-        definition: 'Initial assessment forms to determine customer eligibility', 
-        relatedTerms: ['Lead Generation Tools', 'Applications Processing'], 
+        definition: 'Initial assessment forms to determine customer eligibility',
+        relatedTerms: ['2.1 Account Opening', '1.2 Lead Generation'], 
         usedFor: ['Eligibility Checks', 'Initial Screening'] 
     }, 
  
     // Account Opening NTs 
     'Applications Processing': { 
         definition: 'Systems and workflows for handling customer applications', 
-        relatedTerms: ['Account Opening', 'Customer Onboarding'], 
         usedFor: ['Application Management', 'Application Workflow'] 
     }, 
     'Identity Verification': { 
-        definition: 'Processes to confirm customer identity and authenticity', 
-        relatedTerms: ['Security Operations', 'Compliance Processes'], 
+        definition: 'Processes to confirm customer identity and authenticity',
+        relatedTerms: ['5.2 Security and Access', '2.1 Account Opening'], 
         usedFor: ['ID Verification', 'Authentication Processes'] 
     }, 
     'Document Collection': { 
-        definition: 'Systems for gathering required documentation from customers', 
-        relatedTerms: ['Documents and Statements', 'Customer Onboarding'], 
+        definition: 'Systems for gathering required documentation from customers',
+        relatedTerms: ['3.3 Account Documents', '2.1 Account Opening'], 
         usedFor: ['Document Management', 'Required Documentation'] 
     }, 
     'Funding Processes': { 
         definition: 'Methods for initial account funding and money movement', 
-        relatedTerms: ['Money Movement', 'Deposits'], 
         usedFor: ['Initial Funding', 'Account Capitalization'] 
     }, 
  
     // Initial Configuration NTs 
     'Profile Creation': { 
-        definition: 'Setup of customer profiles and basic account information', 
-        relatedTerms: ['Personal Information', 'Profile Management'], 
+        definition: 'Setup of customer profiles and basic account information',
+        relatedTerms: ['5.1 Profile and Preferences', '2.2 Initial Setup'], 
         usedFor: ['User Profiles', 'Customer Profiles'] 
     }, 
     'Preference Settings': { 
         definition: 'Configuration of customer preferences and customizations', 
-        relatedTerms: ['Communication Preferences', 'Personalization Features'], 
         usedFor: ['User Preferences', 'Account Customization'] 
     }, 
     'Security Setup': { 
         definition: 'Initial configuration of security features and authentication', 
-        relatedTerms: ['Authentication Management', 'Security Administration'], 
         usedFor: ['Security Configuration', 'Authentication Setup'] 
     }, 
     'Welcome Experiences': { 
         definition: 'Onboarding experiences designed to orient new customers', 
-        relatedTerms: ['Customer Onboarding', 'Initial Configuration'], 
         usedFor: ['Onboarding Flows', 'Welcome Journeys'] 
     }, 
  
     // Relationship Building NTs 
     'Rewards Programs': { 
         definition: 'Customer loyalty programs offering points, benefits, or incentives', 
-        relatedTerms: ['Customer Development', 'Rewards Redemption'], 
         usedFor: ['Loyalty Programs', 'Incentive Programs'] 
     }, 
     'Referral Programs': { 
         definition: 'Programs encouraging customers to refer new business', 
-        relatedTerms: ['Customer Development', 'Relationship Building'], 
         usedFor: ['Customer Referrals', 'Word-of-Mouth Marketing'] 
     }, 
     'Loyalty Benefits': { 
         definition: 'Special perks and advantages for loyal customers', 
-        relatedTerms: ['Rewards Programs', 'Relationship Building'], 
         usedFor: ['Member Benefits', 'VIP Perks'] 
     }, 
  
     // Personal Information NTs 
     'Contact Information Updates': { 
         definition: 'Management of customer contact details and address changes', 
-        relatedTerms: ['Profile Management', 'Personal Information'], 
         usedFor: ['Address Changes', 'Contact Updates'] 
     }, 
     'Beneficiary Designations': { 
         definition: 'Management of designated beneficiaries for accounts and policies', 
-        relatedTerms: ['Personal Information', 'Policy Administration'], 
         usedFor: ['Beneficiary Management', 'Estate Designations'] 
     }, 
     'Authorized Users Management': { 
         definition: 'Administration of users authorized to access or manage accounts', 
-        relatedTerms: ['Access Controls', 'Personal Information'], 
         usedFor: ['User Authorization', 'Account Delegation'] 
     }, 
  
     // Communication Preferences NTs 
     'Alert Configurations': { 
         definition: 'Settings for automated notifications and alerts', 
-        relatedTerms: ['Notification Settings', 'Communication Preferences'], 
         usedFor: ['Alert Settings', 'Notification Preferences'] 
     }, 
     'Notification Settings': { 
         definition: 'Customer preferences for receiving various types of notifications', 
-        relatedTerms: ['Communication Preferences', 'Alert Configurations'], 
         usedFor: ['Message Preferences', 'Communication Settings'] 
     }, 
     'Language Preferences': { 
         definition: 'Customer selection of preferred language for communications', 
-        relatedTerms: ['Communication Preferences', 'Accessibility Features'], 
         usedFor: ['Language Settings', 'Localization Preferences'] 
     }, 
     'Delivery Preferences': { 
         definition: 'Customer choices for how communications are delivered', 
-        relatedTerms: ['Communication Preferences', 'Support Channels'], 
         usedFor: ['Delivery Methods', 'Communication Channels'] 
     }, 
  
     // Authentication Management NTs 
     'Password Administration': { 
         definition: 'Management of customer passwords and password policies', 
-        relatedTerms: ['Security Administration', 'Authentication Management'], 
         usedFor: ['Password Management', 'Credential Administration'] 
     }, 
     'Multi-factor Authentication': { 
         definition: 'Security processes requiring multiple forms of verification', 
-        relatedTerms: ['Authentication Management', 'Identity Protection'], 
         usedFor: ['Two-Factor Authentication', 'MFA', 'Enhanced Security'] 
     }, 
     'Biometric Configuration': { 
         definition: 'Setup and management of biometric authentication methods', 
-        relatedTerms: ['Authentication Management', 'Security Administration'], 
         usedFor: ['Fingerprint Authentication', 'Biometric Security'] 
     }, 
     'Device Management': { 
         definition: 'Registration and administration of trusted devices', 
-        relatedTerms: ['Security Administration', 'Authentication Management'], 
         usedFor: ['Trusted Devices', 'Device Registration'] 
     }, 
  
     // Access Controls NTs 
     'User Permissions': { 
         definition: 'Management of what users can access and modify', 
-        relatedTerms: ['Security Administration', 'Access Controls'], 
         usedFor: ['Access Rights', 'Permission Management'] 
     }, 
     'Delegation Settings': { 
         definition: 'Configuration of authority delegation to other users', 
-        relatedTerms: ['Authorized Users Management', 'Access Controls'], 
         usedFor: ['Account Delegation', 'Power of Attorney'] 
     }, 
     'Privacy Controls': { 
         definition: 'Settings governing data privacy and information sharing', 
-        relatedTerms: ['Access Controls', 'Privacy Notices'], 
         usedFor: ['Privacy Settings', 'Data Sharing Controls'] 
     }, 
  
     // Account Summaries NTs 
     'Dashboard Views': { 
         definition: 'Consolidated displays of key account information and metrics', 
-        relatedTerms: ['Account Summaries', 'Account Information Display'], 
         usedFor: ['Account Dashboards', 'Summary Views'] 
     }, 
     'Mobile Home Screens': { 
         definition: 'Primary interface screens optimized for mobile devices', 
-        relatedTerms: ['Mobile Applications', 'Dashboard Views'], 
         usedFor: ['Mobile Dashboards', 'App Home Screens'] 
     }, 
     'Account Aggregation Displays': { 
         definition: 'Views showing combined information from multiple accounts', 
-        relatedTerms: ['Multi-account Views', 'Account Summaries'], 
         usedFor: ['Consolidated Views', 'Account Aggregation'] 
     }, 
     'Multi-account Views': { 
         definition: 'Interfaces displaying information across multiple customer accounts', 
-        relatedTerms: ['Account Summaries', 'Account Aggregation Displays'], 
         usedFor: ['Portfolio Overviews', 'Account Consolidation'] 
     }, 
  
     // Account Details NTs 
     'Balance Information': { 
         definition: 'Display of current account balances and available funds', 
-        relatedTerms: ['Account Details', 'Account Information Display'], 
         usedFor: ['Account Balances', 'Available Funds'] 
     }, 
     'Holdings Details': { 
         definition: 'Detailed information about investment holdings and positions', 
-        relatedTerms: ['Account Details', 'Portfolio Services'], 
         usedFor: ['Investment Holdings', 'Portfolio Positions'] 
     }, 
     'Transaction Histories': { 
         definition: 'Records of past transactions and account activity', 
-        relatedTerms: ['Account Details', 'Transaction Processing'], 
         usedFor: ['Transaction Records', 'Account History'] 
     }, 
     'Performance Metrics': { 
         definition: 'Measurements and analytics of account and investment performance', 
-        relatedTerms: ['Account Details', 'Performance Reporting'], 
         usedFor: ['Performance Analytics', 'Investment Metrics'] 
     }, 
  
     // Documents and Statements NTs 
     'Account Statements': { 
         definition: 'Periodic summaries of account activity and balances', 
-        relatedTerms: ['Documents and Statements', 'Account Information Display'], 
         usedFor: ['Monthly Statements', 'Account Reports'] 
     }, 
     'Tax Documents': { 
-        definition: 'Forms and statements required for tax reporting', 
-        relatedTerms: ['Documents and Statements', 'Regulatory Compliance'], 
+        definition: 'Forms and statements required for tax reporting',
+        relatedTerms: ['3.3 Account Documents', '3.2 Account Details'], 
         usedFor: ['Tax Forms', '1099s', 'Tax Statements'] 
     }, 
     'Confirmations': { 
         definition: 'Documents confirming completed transactions and activities', 
-        relatedTerms: ['Documents and Statements', 'Transaction Processing'], 
         usedFor: ['Trade Confirmations', 'Transaction Receipts'] 
     }, 
     'Legal Documents': { 
         definition: 'Contracts, agreements, and other legally binding documents', 
-        relatedTerms: ['Documents and Statements', 'Terms and Conditions'], 
         usedFor: ['Contracts', 'Legal Agreements', 'Terms of Service'] 
     }, 
  
     // Financial Education Resources NTs 
     'Investment Education': { 
         definition: 'Learning materials about investing principles and strategies', 
-        relatedTerms: ['Financial Education Resources', 'Investment Services'], 
         usedFor: ['Investment Learning', 'Financial Literacy'] 
     }, 
     'Retirement Planning Guides': { 
         definition: 'Resources for planning and managing retirement savings', 
-        relatedTerms: ['Financial Education Resources', 'Retirement Calculators'], 
         usedFor: ['Retirement Education', 'Retirement Resources'] 
     }, 
     'Insurance Education': { 
         definition: 'Educational content about insurance products and concepts', 
-        relatedTerms: ['Financial Education Resources', 'Insurance Services'], 
         usedFor: ['Insurance Literacy', 'Coverage Education'] 
     }, 
     'Banking Basics': { 
         definition: 'Fundamental information about banking products and services', 
-        relatedTerms: ['Financial Education Resources', 'Banking Services'], 
         usedFor: ['Banking Education', 'Financial Fundamentals'] 
     }, 
  
     // Market Research Resources NTs 
     'Market Commentary': { 
         definition: 'Expert analysis and opinions on market conditions and trends', 
-        relatedTerms: ['Market Research Resources', 'Research Services'], 
         usedFor: ['Market Analysis', 'Economic Commentary'] 
     }, 
     'Economic Analysis': { 
         definition: 'Research and insights on economic conditions and indicators', 
-        relatedTerms: ['Market Research Resources', 'Market Commentary'], 
         usedFor: ['Economic Research', 'Market Intelligence'] 
     }, 
     'Investment Research': { 
         definition: 'Detailed analysis of investment opportunities and securities', 
-        relatedTerms: ['Market Research Resources', 'Research Services'], 
         usedFor: ['Securities Research', 'Investment Analysis'] 
     }, 
     'Fund Profiles': { 
         definition: 'Detailed information and analysis of mutual funds and ETFs', 
-        relatedTerms: ['Market Research Resources', 'Mutual Fund Transactions'], 
         usedFor: ['Mutual Fund Information', 'Fund Analysis'] 
     }, 
  
     // Goal Planning Tools NTs 
     'Retirement Calculators': { 
         definition: 'Tools for calculating retirement savings needs and projections', 
-        relatedTerms: ['Goal Planning Tools', 'Retirement Planning Guides'], 
         usedFor: ['Retirement Planning', 'Savings Calculators'] 
     }, 
     'College Savings Planners': { 
         definition: 'Tools for planning and calculating education savings needs', 
-        relatedTerms: ['Goal Planning Tools', 'Planning Calculators'], 
         usedFor: ['Education Planning', '529 Planning'] 
     }, 
     'Budget Calculators': { 
         definition: 'Tools for creating and managing personal budgets', 
-        relatedTerms: ['Goal Planning Tools', 'Cash Flow Analyzers'], 
         usedFor: ['Budget Planning', 'Expense Tracking'] 
     }, 
     'Savings Goal Tools': { 
         definition: 'Calculators for setting and tracking various savings objectives', 
-        relatedTerms: ['Goal Planning Tools', 'Planning Calculators'], 
         usedFor: ['Goal Setting', 'Savings Planning'] 
     }, 
  
     // Needs Analysis Tools NTs 
     'Insurance Needs Calculators': { 
         definition: 'Tools for determining appropriate insurance coverage amounts', 
-        relatedTerms: ['Needs Analysis Tools', 'Insurance Services'], 
         usedFor: ['Coverage Analysis', 'Insurance Planning'] 
     }, 
     'Investment Risk Assessments': { 
         definition: 'Tools for evaluating investment risk tolerance and preferences', 
-        relatedTerms: ['Needs Analysis Tools', 'Risk Analysis'], 
         usedFor: ['Risk Profiling', 'Investment Suitability'] 
     }, 
     'Debt Analysis Tools': { 
         definition: 'Calculators for analyzing and managing debt obligations', 
-        relatedTerms: ['Needs Analysis Tools', 'Lending Services'], 
         usedFor: ['Debt Consolidation', 'Payment Planning'] 
     }, 
     'Cash Flow Analyzers': { 
         definition: 'Tools for analyzing income, expenses, and cash flow patterns', 
-        relatedTerms: ['Needs Analysis Tools', 'Budget Calculators'], 
         usedFor: ['Cash Flow Planning', 'Income Analysis'] 
     }, 
  
     // Investment Analysis Tools NTs 
     'Portfolio Analyzers': { 
         definition: 'Tools for analyzing investment portfolio composition and performance', 
-        relatedTerms: ['Investment Analysis Tools', 'Portfolio Services'], 
         usedFor: ['Portfolio Analysis', 'Asset Allocation'] 
     }, 
     'Fund Screeners': { 
         definition: 'Tools for filtering and searching investment funds by criteria', 
-        relatedTerms: ['Investment Analysis Tools', 'Research Services'], 
         usedFor: ['Fund Selection', 'Investment Screening'] 
     }, 
     'Quote Tools': { 
-        definition: 'Real-time pricing and quote information for securities', 
-        relatedTerms: ['Investment Analysis Tools', 'Market Data'], 
+        definition: 'Real-time pricing and quote information for securities',
+        relatedTerms: ['4.2 Planning Tools', '1.2 Lead Generation'], 
         usedFor: ['Stock Quotes', 'Price Information'] 
     }, 
     'Performance Calculators': { 
         definition: 'Tools for calculating investment returns and performance metrics', 
-        relatedTerms: ['Investment Analysis Tools', 'Performance Metrics'], 
         usedFor: ['Return Calculations', 'Performance Analysis'] 
     }, 
  
     // Platform Types NTs 
     'Web Applications': { 
         definition: 'Browser-based applications for desktop and laptop access', 
-        relatedTerms: ['Platform Types', 'Digital Interfaces'], 
         usedFor: ['Web Portals', 'Online Applications'] 
     }, 
     'Mobile Applications': { 
         definition: 'Native applications designed for smartphones', 
-        relatedTerms: ['Platform Types', 'Mobile Home Screens'], 
         usedFor: ['Mobile Apps', 'Smartphone Applications'] 
     }, 
     'Tablet Applications': { 
         definition: 'Applications optimized for tablet devices and interfaces', 
-        relatedTerms: ['Platform Types', 'Mobile Applications'], 
         usedFor: ['Tablet Apps', 'iPad Applications'] 
     }, 
     'API Services': { 
         definition: 'Application Programming Interfaces for system integration', 
-        relatedTerms: ['Platform Types', 'Digital Interfaces'], 
         usedFor: ['System APIs', 'Integration Services'] 
     }, 
  
     // Interface Features NTs 
     'Navigation Systems': { 
         definition: 'Menu structures and navigation elements for user interfaces', 
-        relatedTerms: ['Interface Features', 'Digital Interfaces'], 
         usedFor: ['Site Navigation', 'Menu Systems'] 
     }, 
     'Search Functions': { 
         definition: 'Search capabilities and tools within applications', 
-        relatedTerms: ['Interface Features', 'Digital Interfaces'], 
         usedFor: ['Site Search', 'Content Search'] 
     }, 
     'Accessibility Features': { 
         definition: 'Design elements supporting users with disabilities', 
-        relatedTerms: ['Interface Features', 'Language Preferences'], 
         usedFor: ['ADA Compliance', 'Inclusive Features'] 
     }, 
     'Personalization Features': { 
         definition: 'Customization options tailored to individual user preferences', 
-        relatedTerms: ['Interface Features', 'Preference Settings'], 
         usedFor: ['User Customization', 'Personal Settings'] 
     }, 
  
     // Automated Assistance NTs 
     'Chatbots': { 
         definition: 'Automated conversational interfaces for customer assistance', 
-        relatedTerms: ['Automated Assistance', 'Customer Support'], 
         usedFor: ['Virtual Assistants', 'Chat Support'] 
     }, 
     'Virtual Assistants': { 
-        definition: 'AI-powered helpers for customer service and task automation', 
-        relatedTerms: ['Automated Assistance', 'Chatbots'], 
+        definition: 'AI-powered helpers for customer service and task automation',
+        relatedTerms: ['7.2 Contact Resources', '8.1 Digital Channels'], 
         usedFor: ['Digital Assistants', 'AI Helpers'] 
     }, 
     'Robo-advisory Services': { 
         definition: 'Automated investment advice and portfolio management services', 
-        relatedTerms: ['Automated Assistance', 'Investment Services'], 
         usedFor: ['Automated Investing', 'Digital Advisory'] 
     }, 
     'Automated Recommendations': { 
         definition: 'System-generated suggestions based on customer data and behavior', 
-        relatedTerms: ['Automated Assistance', 'Personalization Features'], 
         usedFor: ['Product Recommendations', 'Personalized Suggestions'] 
     }, 
  
     // Enhanced Experiences NTs 
     'Voice Banking': { 
         definition: 'Voice-activated banking services and interactions', 
-        relatedTerms: ['Enhanced Experiences', 'Accessibility Features'], 
         usedFor: ['Voice Commands', 'Audio Banking'] 
     }, 
     'Video Banking': { 
         definition: 'Video-based customer service and consultation features', 
-        relatedTerms: ['Enhanced Experiences', 'Video Support'], 
         usedFor: ['Video Calls', 'Virtual Meetings'] 
     }, 
     'Augmented Reality Features': { 
         definition: 'AR technology integration for enhanced user experiences', 
-        relatedTerms: ['Enhanced Experiences', 'Digital Experience'], 
         usedFor: ['AR Experiences', 'Enhanced Reality'] 
     }, 
     'Gamification Elements': { 
         definition: 'Game-like features to increase engagement and motivation', 
-        relatedTerms: ['Enhanced Experiences', 'Interaction Features'], 
         usedFor: ['Game Mechanics', 'Engagement Features'] 
     }, 
  
     // Payment Types NTs 
     'Bill Payments': { 
         definition: 'Services for paying recurring bills and utilities', 
-        relatedTerms: ['Payment Types', 'Payment Transactions'], 
         usedFor: ['Bill Pay', 'Utility Payments'] 
     }, 
     'P2P Payments': { 
-        definition: 'Person-to-person money transfer services', 
-        relatedTerms: ['Payment Types', 'Money Movement'], 
+        definition: 'Person-to-person money transfer services',
+        relatedTerms: ['6.1 Payments', '6.2 Transfers'], 
         usedFor: ['Peer-to-Peer Transfers', 'Personal Payments'] 
     }, 
     'Scheduled Payments': { 
         definition: 'Payments set up to occur automatically on specified dates', 
-        relatedTerms: ['Payment Types', 'Payment Scheduling'], 
         usedFor: ['Automatic Payments', 'Recurring Payments'] 
     }, 
     'Recurring Payments': { 
         definition: 'Regular, repeating payments for ongoing services or bills', 
-        relatedTerms: ['Payment Types', 'Payment Scheduling'], 
         usedFor: ['Subscription Payments', 'Automatic Bill Pay'] 
     }, 
  
     // Payment Management NTs 
     'Payee Administration': { 
         definition: 'Management of payment recipients and their information', 
-        relatedTerms: ['Payment Management', 'Bill Payments'], 
         usedFor: ['Payee Management', 'Recipient Lists'] 
     }, 
     'Payment Scheduling': { 
         definition: 'Tools for setting up future and recurring payment dates', 
-        relatedTerms: ['Payment Management', 'Scheduled Payments'], 
         usedFor: ['Payment Planning', 'Bill Scheduling'] 
     }, 
     'Payment Cancellations': { 
         definition: 'Services for stopping or canceling scheduled payments', 
-        relatedTerms: ['Payment Management', 'Payment Transactions'], 
         usedFor: ['Payment Stops', 'Transaction Cancellation'] 
     }, 
     'Payment Disputes': { 
         definition: 'Processes for resolving payment-related issues and conflicts', 
-        relatedTerms: ['Payment Management', 'Customer Support'], 
         usedFor: ['Dispute Management', 'Payment Issues'] 
     }, 
  
     // Trading Activities NTs 
     'Stock Trading': { 
         definition: 'Buying and selling of individual company shares', 
-        relatedTerms: ['Trading Activities', 'Investment Transactions'], 
         usedFor: ['Equity Trading', 'Share Trading'] 
     }, 
     'Bond Trading': { 
         definition: 'Trading in fixed-income securities and debt instruments', 
-        relatedTerms: ['Trading Activities', 'Investment Transactions'], 
         usedFor: ['Fixed Income Trading', 'Debt Securities'] 
     }, 
     'Mutual Fund Transactions': { 
         definition: 'Buying and selling shares in professionally managed funds', 
-        relatedTerms: ['Trading Activities', 'Fund Profiles'], 
         usedFor: ['Fund Transactions', 'Mutual Fund Trading'] 
     }, 
     'Options Trading': { 
         definition: 'Trading in options contracts and derivative securities', 
-        relatedTerms: ['Trading Activities', 'Investment Transactions'], 
         usedFor: ['Options Contracts', 'Derivative Trading'] 
     }, 
     'ETF Trading': { 
         definition: 'Trading in Exchange-Traded Funds', 
-        relatedTerms: ['Trading Activities', 'Investment Transactions'], 
         usedFor: ['Exchange-Traded Funds', 'Index Fund Trading'] 
     }, 
  
     // Investment Account Movements NTs 
     'Contributions': { 
         definition: 'Deposits made to investment and retirement accounts', 
-        relatedTerms: ['Investment Account Movements', 'Deposits'], 
         usedFor: ['Account Deposits', 'Investment Funding'] 
     }, 
     'Distributions': { 
         definition: 'Withdrawals and payouts from investment accounts', 
-        relatedTerms: ['Investment Account Movements', 'Investment Transactions'], 
         usedFor: ['Account Withdrawals', 'Retirement Distributions'] 
     }, 
     'Rollovers': { 
         definition: 'Transfer of funds between qualified retirement accounts', 
-        relatedTerms: ['Investment Account Movements', 'Transfers'], 
         usedFor: ['IRA Rollovers', '401k Transfers'] 
     }, 
     'Rebalancing': { 
         definition: 'Adjusting portfolio allocations to maintain target percentages', 
-        relatedTerms: ['Investment Account Movements', 'Asset Allocation'], 
         usedFor: ['Portfolio Rebalancing', 'Allocation Adjustments'] 
     }, 
     'Asset Allocation Changes': { 
         definition: 'Modifications to how investments are distributed across asset classes', 
-        relatedTerms: ['Investment Account Movements', 'Asset Allocation'], 
         usedFor: ['Allocation Changes', 'Portfolio Adjustments'] 
     }, 
  
     // Transfers NTs 
     'Internal Transfers': { 
-        definition: 'Movement of funds between accounts within the same institution', 
-        relatedTerms: ['Transfers', 'Money Movement'], 
+        definition: 'Movement of funds between accounts within the same institution',
+        relatedTerms: ['6.2 Transfers', '3.1 Account Summary Views'], 
         usedFor: ['Account Transfers', 'Internal Movements'] 
     }, 
     'External Transfers': { 
-        definition: 'Transfer of funds to or from accounts at other institutions', 
-        relatedTerms: ['Transfers', 'Money Movement'], 
+        definition: 'Transfer of funds to or from accounts at other institutions',
+        relatedTerms: ['6.2 Transfers', '6.3 Deposits'], 
         usedFor: ['Bank Transfers', 'ACH Transfers'] 
     }, 
     'Wire Transfers': { 
         definition: 'Fast, secure electronic transfers for large amounts', 
-        relatedTerms: ['Transfers', 'Money Movement'], 
         usedFor: ['Wire Services', 'Electronic Transfers'] 
     }, 
     'International Transfers': { 
         definition: 'Cross-border money transfers and foreign exchange services', 
-        relatedTerms: ['Transfers', 'Money Movement'], 
         usedFor: ['Global Transfers', 'Currency Exchange'] 
     }, 
  
     // Deposits NTs 
     'Direct Deposits': { 
         definition: 'Electronic deposits of paychecks and other regular payments', 
-        relatedTerms: ['Deposits', 'Banking Services'], 
         usedFor: ['Payroll Deposits', 'Automatic Deposits'] 
     }, 
     'Mobile Check Deposits': { 
         definition: 'Deposit checks using mobile device camera capture', 
-        relatedTerms: ['Deposits', 'Mobile Applications'], 
         usedFor: ['Remote Check Deposit', 'Mobile Deposits'] 
     }, 
     'Cash Deposits': { 
         definition: 'Physical cash deposits at ATMs or branch locations', 
-        relatedTerms: ['Deposits', 'Banking Services'], 
         usedFor: ['Cash Funding', 'ATM Deposits'] 
     }, 
     'Electronic Deposits': { 
         definition: 'Various forms of electronic money deposits and transfers', 
-        relatedTerms: ['Deposits', 'Money Movement'], 
         usedFor: ['E-Deposits', 'Digital Funding'] 
     }, 
  
     // Rewards Redemption NTs 
     'Points Redemption': { 
         definition: 'Exchange of loyalty points for rewards or merchandise', 
-        relatedTerms: ['Rewards Redemption', 'Rewards Programs'], 
         usedFor: ['Point Exchange', 'Reward Claims'] 
     }, 
     'Cash Back Processing': { 
         definition: 'Services for earning and redeeming cash-back rewards', 
-        relatedTerms: ['Rewards Redemption', 'Rewards Programs'], 
         usedFor: ['Cash Rewards', 'Rebate Processing'] 
     }, 
     'Travel Rewards Booking': { 
         definition: 'Services for redeeming points for travel arrangements', 
-        relatedTerms: ['Rewards Redemption', 'Rewards Programs'], 
         usedFor: ['Travel Redemption', 'Point Travel'] 
     }, 
  
     // Help Resources NTs 
     'Help Centers': { 
         definition: 'Centralized resources for customer self-service support', 
-        relatedTerms: ['Help Resources', 'Self-service Support'], 
         usedFor: ['Support Centers', 'Help Portals'] 
     }, 
     'FAQs': { 
-        definition: 'Frequently Asked Questions and their answers', 
-        relatedTerms: ['Help Resources', 'Self-service Support'], 
+        definition: 'Frequently Asked Questions and their answers',
+        relatedTerms: ['7.1 Help Resources', '8.2 User Interface'], 
         usedFor: ['Question Database', 'Common Questions'] 
     }, 
     'Video Tutorials': { 
         definition: 'Educational videos explaining features and processes', 
-        relatedTerms: ['Help Resources', 'Educational Content'], 
         usedFor: ['How-to Videos', 'Training Videos'] 
     }, 
     'Knowledge Bases': { 
         definition: 'Comprehensive repositories of information and documentation', 
-        relatedTerms: ['Help Resources', 'Self-service Support'], 
         usedFor: ['Documentation', 'Information Libraries'] 
     }, 
  
     // Feedback Mechanisms NTs 
     'Surveys': { 
         definition: 'Customer feedback collection through structured questionnaires', 
-        relatedTerms: ['Feedback Mechanisms', 'Customer Support'], 
         usedFor: ['Customer Surveys', 'Feedback Forms'] 
     }, 
     'Feedback Forms': { 
         definition: 'Structured forms for collecting customer opinions and suggestions', 
-        relatedTerms: ['Feedback Mechanisms', 'Customer Support'], 
         usedFor: ['Comment Forms', 'Suggestion Forms'] 
     }, 
     'Ratings Systems': { 
         definition: 'Mechanisms for customers to rate services and experiences', 
-        relatedTerms: ['Feedback Mechanisms', 'Customer Support'], 
         usedFor: ['Service Ratings', 'Experience Ratings'] 
     }, 
     'Suggestion Boxes': { 
         definition: 'Channels for customers to submit ideas and recommendations', 
-        relatedTerms: ['Feedback Mechanisms', 'Customer Support'], 
         usedFor: ['Customer Suggestions', 'Improvement Ideas'] 
     }, 
  
     // Support Channels NTs 
     'Phone Support': { 
-        definition: 'Customer service assistance provided via telephone', 
-        relatedTerms: ['Support Channels', 'Professional Support'], 
+        definition: 'Customer service assistance provided via telephone',
+        relatedTerms: ['7.2 Contact Resources', '5.1 Profile and Preferences'], 
         usedFor: ['Call Centers', 'Phone Help'] 
     }, 
     'Live Chat': { 
-        definition: 'Real-time text-based customer support through websites or apps', 
-        relatedTerms: ['Support Channels', 'Professional Support'], 
+        definition: 'Real-time text-based customer support through websites or apps',
+        relatedTerms: ['7.2 Contact Resources', '8.1 Digital Channels'], 
         usedFor: ['Chat Support', 'Online Chat'] 
     }, 
     'Secure Messaging': { 
-        definition: 'Encrypted messaging systems for confidential communications', 
-        relatedTerms: ['Support Channels', 'Security Administration'], 
+        definition: 'Encrypted messaging systems for confidential communications',
+        relatedTerms: ['7.2 Contact Resources', '8.1 Digital Channels'], 
         usedFor: ['Secure Communications', 'Private Messaging'] 
     }, 
     'Video Support': { 
         definition: 'Face-to-face customer service through video calls', 
-        relatedTerms: ['Support Channels', 'Video Banking'], 
         usedFor: ['Video Chat', 'Virtual Meetings'] 
     }, 
     'Email Support': { 
         definition: 'Customer service assistance provided through email communications', 
-        relatedTerms: ['Support Channels', 'Professional Support'], 
         usedFor: ['Email Help', 'Support Tickets'] 
     }, 
  
     // Advisory Services NTs 
     'Financial Advisors': { 
         definition: 'Professional guidance on investment and financial planning', 
-        relatedTerms: ['Advisory Services', 'Investment Services'], 
         usedFor: ['Investment Advice', 'Financial Planning'] 
     }, 
     'Insurance Agents': { 
         definition: 'Professional assistance with insurance products and claims', 
-        relatedTerms: ['Advisory Services', 'Insurance Services'], 
         usedFor: ['Insurance Guidance', 'Coverage Advice'] 
     }, 
     'Wellness Coaches': { 
         definition: 'Professional guidance on health and wellness programs', 
-        relatedTerms: ['Advisory Services', 'Health Services'], 
         usedFor: ['Health Coaching', 'Wellness Programs'] 
     }, 
     'Investment Consultants': { 
         definition: 'Specialized advice on complex investment strategies and products', 
-        relatedTerms: ['Advisory Services', 'Investment Services'], 
         usedFor: ['Investment Strategy', 'Portfolio Consulting'] 
     }, 
  
     // Security Monitoring NTs 
     'Fraud Detection': { 
         definition: 'Systems and processes for identifying fraudulent activities', 
-        relatedTerms: ['Security Monitoring', 'Security Operations'], 
         usedFor: ['Fraud Prevention', 'Suspicious Activity Monitoring'] 
     }, 
     'Transaction Monitoring': { 
         definition: 'Surveillance of financial transactions for unusual patterns', 
-        relatedTerms: ['Security Monitoring', 'Compliance Processes'], 
         usedFor: ['Transaction Surveillance', 'Activity Monitoring'] 
     }, 
     'Identity Protection': { 
         definition: 'Services and features protecting customer identity information', 
-        relatedTerms: ['Security Monitoring', 'Multi-factor Authentication'], 
         usedFor: ['ID Protection', 'Identity Security'] 
     }, 
     'Threat Detection': { 
         definition: 'Systems for identifying security threats and cyber attacks', 
-        relatedTerms: ['Security Monitoring', 'Security Operations'], 
         usedFor: ['Security Monitoring', 'Cyber Threat Detection'] 
     }, 
  
     // Security Controls NTs 
     'Data Encryption': { 
         definition: 'Technical measures for protecting data through encryption', 
-        relatedTerms: ['Security Controls', 'Security Operations'], 
         usedFor: ['Data Security', 'Encryption Services'] 
     }, 
     'Access Logging': { 
         definition: 'Recording and monitoring of system access and user activities', 
-        relatedTerms: ['Security Controls', 'Security Auditing'], 
         usedFor: ['Activity Logs', 'Access Records'] 
     }, 
     'Security Auditing': { 
         definition: 'Systematic review and assessment of security measures', 
-        relatedTerms: ['Security Controls', 'Compliance Processes'], 
         usedFor: ['Security Reviews', 'Audit Processes'] 
     }, 
     'Incident Response': { 
         definition: 'Procedures for responding to security breaches and incidents', 
-        relatedTerms: ['Security Controls', 'Security Operations'], 
         usedFor: ['Security Response', 'Breach Management'] 
     }, 
  
     // Required Disclosures NTs 
     'Privacy Notices': { 
         definition: 'Legal documents explaining data collection and privacy practices', 
-        relatedTerms: ['Required Disclosures', 'Regulatory Compliance'], 
         usedFor: ['Privacy Policies', 'Data Protection Notices'] 
     }, 
     'Terms and Conditions': { 
         definition: 'Legal agreements governing the use of products and services', 
-        relatedTerms: ['Required Disclosures', 'Legal Documents'], 
         usedFor: ['Service Terms', 'User Agreements'] 
     }, 
     'Fee Disclosures': { 
         definition: 'Documentation of all fees and charges associated with services', 
-        relatedTerms: ['Required Disclosures', 'Regulatory Compliance'], 
         usedFor: ['Fee Schedules', 'Cost Disclosures'] 
     }, 
     'Regulatory Disclosures': { 
         definition: 'Required legal and regulatory notices and disclaimers', 
-        relatedTerms: ['Required Disclosures', 'Regulatory Compliance'], 
         usedFor: ['Legal Disclosures', 'Regulatory Notices'] 
     }, 
  
     // Compliance Processes NTs 
     'Audit Documentation': { 
         definition: 'Records and documentation required for regulatory audits', 
-        relatedTerms: ['Compliance Processes', 'Regulatory Compliance'], 
         usedFor: ['Audit Records', 'Compliance Documentation'] 
     }, 
     'Regulatory Reporting': { 
         definition: 'Submission of required reports to regulatory authorities', 
-        relatedTerms: ['Compliance Processes', 'Regulatory Compliance'], 
         usedFor: ['Compliance Reports', 'Regulatory Filings'] 
     }, 
     'Consent Management': { 
         definition: 'Systems for managing customer permissions and consents', 
-        relatedTerms: ['Compliance Processes', 'Privacy Controls'], 
         usedFor: ['Permission Management', 'Consent Tracking'] 
     }, 
     'Data Retention': { 
         definition: 'Policies and practices for storing and disposing of data', 
-        relatedTerms: ['Compliance Processes', 'Regulatory Compliance'], 
         usedFor: ['Record Retention', 'Data Lifecycle Management'] 
     }, 
  
     // Policy Administration NTs 
     'Policy Management': { 
-        definition: 'Administration and maintenance of insurance policies', 
-        relatedTerms: ['Policy Administration', 'Insurance Services'], 
+        definition: 'Administration and maintenance of insurance policies',
+        relatedTerms: ['5.7 Policy Servicing', '5.1 Profile and Preferences'], 
         usedFor: ['Insurance Administration', 'Policy Maintenance'] 
     }, 
     'Coverage Modifications': { 
         definition: 'Changes to insurance coverage amounts and terms', 
-        relatedTerms: ['Policy Administration', 'Policy Management'], 
         usedFor: ['Coverage Changes', 'Policy Updates'] 
     }, 
     'Policy Renewals': { 
-        definition: 'Processes for extending insurance policies for additional terms', 
-        relatedTerms: ['Policy Administration', 'Policy Management'], 
+        definition: 'Processes for extending insurance policies for additional terms',
+        relatedTerms: ['5.7 Policy Servicing', '6.1 Payments'], 
         usedFor: ['Policy Extensions', 'Renewal Processing'] 
     }, 
     'Rider Management': { 
         definition: 'Administration of additional coverage options and policy riders', 
-        relatedTerms: ['Policy Administration', 'Coverage Modifications'], 
         usedFor: ['Additional Coverage', 'Policy Riders'] 
     }, 
  
     // Claims Processing NTs 
     'Claims Submission': { 
         definition: 'Process for filing insurance claims and required documentation', 
-        relatedTerms: ['Claims Processing', 'Insurance Services'], 
         usedFor: ['Claim Filing', 'Claim Applications'] 
     }, 
     'Claims Tracking': { 
         definition: 'Systems for monitoring claim status and progress', 
-        relatedTerms: ['Claims Processing', 'Claims Submission'], 
         usedFor: ['Claim Status', 'Claim Monitoring'] 
     }, 
     'Claims Appeals': { 
         definition: 'Processes for disputing claim decisions and seeking review', 
-        relatedTerms: ['Claims Processing', 'Claims Submission'], 
         usedFor: ['Claim Disputes', 'Appeal Processes'] 
     }, 
     'Claims History': { 
         definition: 'Records of past claims and their outcomes', 
-        relatedTerms: ['Claims Processing', 'Insurance Services'], 
         usedFor: ['Claim Records', 'Loss History'] 
     }, 
  
     // Health Services NTs 
     'Provider Networks': { 
-        definition: 'Networks of healthcare providers covered by insurance plans', 
-        relatedTerms: ['Health Services', 'Insurance Services'], 
+        definition: 'Networks of healthcare providers covered by insurance plans',
+        relatedTerms: ['5.9 Care Coordination', '7.2 Contact Resources'], 
         usedFor: ['Doctor Networks', 'Healthcare Providers'] 
     }, 
     'Prescription Management': { 
         definition: 'Services for managing prescription drug benefits and coverage', 
-        relatedTerms: ['Health Services', 'Insurance Services'], 
         usedFor: ['Pharmacy Benefits', 'Drug Coverage'] 
     }, 
     'Telehealth Services': { 
-        definition: 'Remote healthcare services and virtual medical consultations', 
-        relatedTerms: ['Health Services', 'Video Support'], 
+        definition: 'Remote healthcare services and virtual medical consultations',
+        relatedTerms: ['7.2 Contact Resources', '5.9 Care Coordination'], 
         usedFor: ['Virtual Healthcare', 'Remote Medicine'] 
     }, 
     'Care Coordination': { 
         definition: 'Services for coordinating healthcare across multiple providers', 
-        relatedTerms: ['Health Services', 'Insurance Services'], 
         usedFor: ['Healthcare Coordination', 'Care Management'] 
     }, 
     'Medical Records Access': { 
         definition: 'Systems for accessing and managing personal health information', 
-        relatedTerms: ['Health Services', 'Account Information Display'], 
         usedFor: ['Health Records', 'Medical Information'] 
     }, 
  
     // Card Services NTs 
     'Card Management': { 
         definition: 'Administration of credit and debit cards and their features', 
-        relatedTerms: ['Card Services', 'Banking Services'], 
         usedFor: ['Credit Card Management', 'Debit Card Services'] 
     }, 
     'Digital Wallets': { 
         definition: 'Electronic systems for storing and using payment card information', 
-        relatedTerms: ['Card Services', 'Mobile Applications'], 
         usedFor: ['Mobile Wallets', 'Electronic Payments'] 
     }, 
     'Card Controls': { 
         definition: 'Security features and controls for managing card usage', 
-        relatedTerms: ['Card Services', 'Fraud Detection'], 
         usedFor: ['Card Security', 'Usage Controls'] 
     }, 
     'Virtual Cards': { 
         definition: 'Digital-only card numbers for online and secure transactions', 
-        relatedTerms: ['Card Services', 'Digital Wallets'], 
         usedFor: ['Online Cards', 'Secure Payments'] 
     }, 
  
     // Lending Services NTs 
     'Loan Applications': { 
         definition: 'Processes for applying for various types of loans', 
-        relatedTerms: ['Lending Services', 'Applications Processing'], 
         usedFor: ['Credit Applications', 'Loan Processing'] 
     }, 
     'Loan Management': { 
         definition: 'Administration and servicing of existing loans', 
-        relatedTerms: ['Lending Services', 'Account Management'], 
         usedFor: ['Loan Servicing', 'Credit Management'] 
     }, 
     'Mortgage Services': { 
         definition: 'Specialized services for home mortgage loans', 
-        relatedTerms: ['Lending Services', 'Banking Services'], 
         usedFor: ['Home Loans', 'Mortgage Banking'] 
     }, 
     'Credit Line Management': { 
         definition: 'Administration of lines of credit and revolving credit facilities', 
-        relatedTerms: ['Lending Services', 'Banking Services'], 
         usedFor: ['Credit Lines', 'Revolving Credit'] 
     }, 
  
     // Portfolio Services NTs 
     'Asset Allocation': { 
         definition: 'Strategic distribution of investments across different asset classes', 
-        relatedTerms: ['Portfolio Services', 'Asset Allocation Changes'], 
         usedFor: ['Investment Strategy', 'Portfolio Construction'] 
     }, 
     'Performance Reporting': { 
         definition: 'Regular reports on investment performance and portfolio metrics', 
-        relatedTerms: ['Portfolio Services', 'Performance Metrics'], 
         usedFor: ['Investment Reports', 'Performance Analytics'] 
     }, 
     'Tax Optimization': { 
         definition: 'Strategies and services to minimize tax impact on investments', 
-        relatedTerms: ['Portfolio Services', 'Investment Services'], 
         usedFor: ['Tax-Efficient Investing', 'Tax Management'] 
     }, 
     'Risk Analysis': { 
         definition: 'Assessment and evaluation of investment risks and exposures', 
-        relatedTerms: ['Portfolio Services', 'Investment Risk Assessments'], 
         usedFor: ['Risk Assessment', 'Investment Risk'] 
     }, 
  
     // Research Services NTs 
     'Watchlists': { 
         definition: 'Personalized lists of securities and investments to monitor', 
-        relatedTerms: ['Research Services', 'Investment Services'], 
         usedFor: ['Investment Tracking', 'Security Monitoring'] 
     }, 
     'Investment Alerts': { 
         definition: 'Notifications about investment opportunities and market changes', 
-        relatedTerms: ['Research Services', 'Alert Configurations'], 
         usedFor: ['Market Alerts', 'Investment Notifications'] 
     }, 
     'Research Reports': { 
         definition: 'Professional analysis and recommendations on investments', 
-        relatedTerms: ['Research Services', 'Investment Research'], 
         usedFor: ['Investment Analysis', 'Security Research'] 
     }, 
     'Market Data': { 
         definition: 'Real-time and historical financial market information', 
-        relatedTerms: ['Research Services', 'Quote Tools'], 
         usedFor: ['Market Information', 'Financial Data'] 
     } 
 }; 
@@ -1809,7 +1662,6 @@ stroke: color,
     { id: 'health-plan', name: 'Health Plan', icon: Heart, color: colorblindMode ? colors.colorblind.warning : colors.dustyRose },
     { id: 'medicare', name: 'Medicare', icon: Pill, color: colorblindMode ? colors.colorblind.secondary : colors.ocean },
     { id: 'pharmacy', name: 'Pharmacy', icon: Pill, color: colorblindMode ? colors.colorblind.accent : colors.seafoam },
-    { id: 'amm-inv', name: 'Asset Management Investor', icon: TrendingUp, color: colorblindMode ? colors.colorblind.neutral2 : colors.deepTeal },
     { id: 'amm-adv', name: 'Asset Management Advisor', icon: TrendingUp, color: colorblindMode ? colors.colorblind.neutral1 : colors.midnight },
     { id: 'rpm', name: 'Retirement', icon: PiggyBank, color: colorblindMode ? colors.colorblind.neutral3 : colors.mediumSage },
     { id: 'rpmh', name: 'Retirement Institutional', icon: Heart, color: colorblindMode ? colors.colorblind.success : colors.lightTeal },
@@ -1823,8 +1675,6 @@ stroke: color,
     { id: 'automated-investing', name: 'Automated Investing', icon: Activity, color: colorblindMode ? colors.colorblind.info : colors.amber },
     { id: 'e-monitor', name: 'e-Monitor', icon: Monitor, color: colorblindMode ? colors.colorblind.warning : colors.mist },
     { id: 'fintech', name: 'Fintech', icon: Activity, color: colorblindMode ? colors.colorblind.neutral1 : colors.deepNavy },
-    { id: 'direct-bank', name: 'Direct Bank', icon: Smartphone, color: colorblindMode ? colors.colorblind.neutral2 : colors.cloud },
-    { id: 'crisis-comms', name: 'Crisis Communications', icon: AlertCircle, color: colorblindMode ? colors.colorblind.danger : colors.danger },
     { id: 'shareholder', name: 'Shareholder', icon: Users, color: colorblindMode ? colors.colorblind.neutral4 : colors.fog }
   ];
 }
@@ -1886,45 +1736,56 @@ stroke: color,
             const handleTagClick = (tagName) => { 
                 setSearchTerm(tagName); 
             }; 
-  			const handleRelatedTermClick = (relatedTerm) => { 
-                // Clear search first to show full hierarchy 
-                setSearchTerm(''); 
-                 
-                // Try to find the term in the taxonomy 
-                // Related terms are in format "1.2.1 Term Name"  
-                const foundTerm = flatTaxonomy.find(item => { 
-                    // Check if the related term matches exactly 
-                    if (relatedTerm === item.term) return true; 
-                     
-                    // Check if related term is in format "code term" 
-                    if (relatedTerm.includes(' ') && item.code) { 
-                        const expectedFormat = `${item.code} ${item.term}`; 
-                        return relatedTerm === expectedFormat; 
-                    } 
-                     
-                    // Check if it matches by code only 
-                    if (item.code === relatedTerm) return true; 
-                     
-                    return false; 
-                }); 
-                 
-                if (foundTerm) { 
-                    // Expand all parent nodes to make the term visible 
-                    const newExpanded = new Set(expandedNodes); 
-                     
-                    // Walk up the hierarchy and expand all parents 
-                    let current = foundTerm.parent; 
-                    while (current) { 
-                        newExpanded.add(current.id); 
-                        current = current.parent; 
-                    } 
-                     
-                    setExpandedNodes(newExpanded); 
-                    setSelectedTerm(foundTerm); 
-                } else { 
-                    // Fallback to search if term not found directly 
-                    handleTagClick(relatedTerm); 
-                } 
+  			const handleRelatedTermClick = (relatedTerm) => {
+                // Clear search first to show full hierarchy
+                setSearchTerm('');
+
+                // Extract term name from "code term" format if needed
+                let termToFind = relatedTerm;
+                if (relatedTerm.includes(' ')) {
+                    // Split and take everything after the first space (the term name)
+                    const parts = relatedTerm.split(' ');
+                    // First part is likely the code, rest is the term name
+                    termToFind = parts.slice(1).join(' ');
+                }
+
+                // Try to find the term in the taxonomy
+                const foundTerm = flatTaxonomy.find(item => {
+                    // Check if the term name matches
+                    if (item.term === termToFind) return true;
+
+                    // Check if the related term matches exactly
+                    if (relatedTerm === item.term) return true;
+
+                    // Check if related term is in format "code term"
+                    if (relatedTerm.includes(' ') && item.code) {
+                        const expectedFormat = `${item.code} ${item.term}`;
+                        return relatedTerm === expectedFormat;
+                    }
+
+                    // Check if it matches by code only
+                    if (item.code === relatedTerm) return true;
+
+                    return false;
+                });
+
+                if (foundTerm) {
+                    // Expand all parent nodes to make the term visible
+                    const newExpanded = new Set(expandedNodes);
+
+                    // Walk up the hierarchy and expand all parents
+                    let current = foundTerm.parent;
+                    while (current) {
+                        newExpanded.add(current.id);
+                        current = current.parent;
+                    }
+
+                    setExpandedNodes(newExpanded);
+                    setSelectedTerm(foundTerm);
+                } else {
+                    // Fallback to search if term not found directly
+                    handleTagClick(termToFind);
+                }
             }; 
             // Filter by monitors 
             const monitorFilteredTaxonomy = useMemo(() => { 
@@ -2145,28 +2006,34 @@ stroke: color,
 h(ChevronDown, { size: 16, color: colors.navy }) :
 h(ChevronRight, { size: 16, color: colors.navy }) 
                         ), 
-                        h('span', { className: "text-sm text-gray-600 mr-3 min-w-16 font-mono" }, node.code), 
-                        h('div', { className: "tooltip flex-1" }, 
-                            h('span', { className: "font-medium text-gray-900" }, node.term), 
-                            node.definition && h('span', { className: "tooltiptext" },  
-                                h('strong', {}, node.term), 
-                                h('br'), 
-                                h('br'), 
-                                node.definition 
-                            ) 
+                        h('span', { className: "text-sm text-gray-600 mr-3 min-w-16 font-mono" }, node.code),
+                        h('div', {
+                            className: "tooltip flex-1",
+                            onMouseEnter: (e) => {
+                                const tooltip = e.currentTarget.querySelector('.tooltiptext');
+                                if (tooltip) {
+                                    const rect = e.currentTarget.getBoundingClientRect();
+                                    tooltip.style.left = rect.left + (rect.width / 2) + 'px';
+                                    tooltip.style.top = rect.top + 'px';
+                                }
+                            }
+                        },
+                            h('span', { className: "font-medium text-gray-900" }, node.term),
+                            node.definition && h('span', { className: "tooltiptext" },
+                                h('strong', {}, node.term),
+                                h('br'),
+                                h('br'),
+                                node.definition
+                            )
                         ), 
-                        node.monitors && h('div', { className: "flex flex-wrap gap-1 ml-2" }, 
-                            node.monitors.slice(0, 3).map(monitorId => { 
-                                const monitor = dynamicMonitors.find(m => m.id === monitorId); 
-                                return monitor ? h('button', { 
-                                    key: monitorId, 
-                                    className: "inline-block px-2 py-1 text-xs rounded-full text-white hover:opacity-80 transition-opacity", 
-style: { backgroundColor: monitor.color }, 
-                                    onClick: (e) => { 
-                                        e.stopPropagation(); 
-                                        handleMonitorClick(monitorId); 
-                                    } 
-                                }, monitor.name) : null; 
+                        node.monitors && h('div', { className: "flex flex-wrap gap-1 ml-2" },
+                            node.monitors.slice(0, 3).map(monitorId => {
+                                const monitor = dynamicMonitors.find(m => m.id === monitorId);
+                                return monitor ? h('span', {
+                                    key: monitorId,
+                                    className: "inline-block px-2 py-1 text-xs rounded-full text-white",
+style: { backgroundColor: monitor.color }
+                                }, monitor.name) : null;
                             }), 
                             node.monitors.length > 3 && h('span', { 
                                 className: "inline-block px-2 py-1 text-xs rounded-full text-white", 
@@ -2278,19 +2145,18 @@ React.createElement(X, { size: 20, color: colors.silver })
                             React.createElement('h2', { className: "text-2xl font-bold text-gray-900 mb-4" }, term.term), 
                              
                             term.monitors && term.monitors.length > 0 && React.createElement('div', { className: "mb-4" }, 
-                                React.createElement('h3', { className: "text-sm font-semibold text-gray-700 mb-2" }, "Applicable Monitors"), 
-                                React.createElement('div', { className: "flex flex-wrap gap-2" }, 
-                                    term.monitors.map(monitorId => { 
-                                        const monitor = monitors.find(m => m.id === monitorId); 
-                                        return monitor ? React.createElement('button', { 
-                                            key: monitorId, 
-                                            className: "inline-flex items-center px-3 py-1 rounded-full text-sm text-white font-medium hover:opacity-80 transition-opacity", 
-style: { backgroundColor: monitor.color }, 
-                                            onClick: () => handleMonitorClick(monitorId) 
-                                        }, 
-                                            React.createElement(monitor.icon, { size: 14, className: "mr-1" }), 
-                                            monitor.name 
-                                        ) : null; 
+                                React.createElement('h3', { className: "text-sm font-semibold text-gray-700 mb-2" }, "Applicable Monitors"),
+                                React.createElement('div', { className: "flex flex-wrap gap-2" },
+                                    term.monitors.map(monitorId => {
+                                        const monitor = monitors.find(m => m.id === monitorId);
+                                        return monitor ? React.createElement('span', {
+                                            key: monitorId,
+                                            className: "inline-flex items-center px-3 py-1 rounded-full text-sm text-white font-medium",
+style: { backgroundColor: monitor.color }
+                                        },
+                                            React.createElement(monitor.icon, { size: 14, className: "mr-1" }),
+                                            monitor.name
+                                        ) : null;
                                     }) 
                                 ) 
                             ) 
@@ -2430,56 +2296,18 @@ React.createElement('svg', {
 ),
                                 React.createElement('div', {}, 
                                     React.createElement('h1', { className: "text-2xl font-bold text-gray-900" }, "Corporate Insight Taxonomy System"), 
-React.createElement('p', { className: "text-sm", style: { color: colors.storm } }, "ISO 25964-1:2011 Compliant â€¢ Document Management Team") 
+React.createElement('p', { className: "text-sm", style: { color: colors.storm } }, "ISO 25964-1:2011 Compliant") 
                                 ) 
                             ), 
-                            React.createElement('div', { className: "flex items-center space-x-3" }, 
-                                React.createElement('button', { 
-                                    className: "theme-toggle", 
-                                    onClick: toggleDarkMode 
-                                }, 
-                                    React.createElement(darkMode ? Sun : Moon, { size: 16 }), 
-                                    darkMode ? 'Light' : 'Dark' 
-                                ), 
-                              React.createElement('button', { 
-                                  className: "accessibility-toggle", 
-                                  onClick: toggleColorblindMode, 
-                                  title: colorblindMode ? 'Switch to Standard Colors' : 'Switch to Colorblind-Friendly Colors' 
-                                  }, 
-                              React.createElement(colorblindMode ? Eye : EyeOff, { size: 16 }), 
-                              colorblindMode ? 'Standard' : 'Accessible' 
-                                  ), 
-                                React.createElement('button', { 
-                                    onClick: () => setShowFilters(!showFilters), 
-                                    className: `flex items-center px-4 py-2 rounded-lg transition-colors ${ 
-                                        selectedMonitors.size > 0  
-                                            ? 'text-white'  
-                                            : 'border text-gray-700 hover:bg-gray-50' 
-                                    }`, 
-                                    style: {  
-                                        backgroundColor: selectedMonitors.size > 0 ? colors.teal : 'transparent', 
-                                        borderColor: selectedMonitors.size > 0 ? colors.teal : colors.cloud  
-                                    } 
-                                }, 
-                                    React.createElement(Filter, { size: 16, className: "mr-2" }), 
-                                    `Monitors ${selectedMonitors.size > 0 ? `(${selectedMonitors.size})` : ''}` 
-                                ), 
-                                React.createElement('button', { 
-                                    onClick: () => setShowUpload(true), 
-                                    className: "flex items-center px-4 py-2 text-white rounded-lg hover:opacity-90 transition-opacity", 
-                                    style: { backgroundColor: colorblindMode ? colors.colorblind.primary : colors.navy } 
-                                }, 
-                                    React.createElement(Upload, { size: 16, className: "mr-2" }), 
-                                    "Tag Document" 
-                                ), 
-                                React.createElement('button', { 
-                                    onClick: exportResults, 
-                                    className: "flex items-center px-4 py-2 border rounded-lg hover:bg-gray-50 transition-colors", 
-                                    style: { borderColor: colors.cloud } 
-                                }, 
-                                    React.createElement(Download, { size: 16, className: "mr-2" }), 
-                                    "Export" 
-                                ) 
+                            React.createElement('div', { className: "flex items-center space-x-3" },
+                              React.createElement('button', {
+                                  className: "accessibility-toggle",
+                                  onClick: toggleColorblindMode,
+                                  title: colorblindMode ? 'Switch to Standard Colors' : 'Switch to Colorblind-Friendly Colors'
+                                  },
+                              React.createElement(colorblindMode ? Eye : EyeOff, { size: 16 }),
+                              colorblindMode ? 'Standard' : 'Accessible'
+                                  )
                             ) 
                         ) 
                     ) 
@@ -2518,19 +2346,6 @@ backgroundColor: selectedMonitors.has(monitor.id) ? monitor.color : undefined
                     ) 
                 ), 
  
-                
-                // Colorblind Toggle
-React.createElement("div", { className: "flex items-center space-x-2 p-2" },
-  React.createElement("label", { className: "flex items-center space-x-1 cursor-pointer" },
-    React.createElement("input", {
-      type: "checkbox",
-      checked: colorblindMode,
-      onChange: (e) => setColorblindMode(e.target.checked)
-    }),
-    "Colorblind Mode"
-  )
-),
-    
                 // Main Content 
                 React.createElement('div', { className: "max-w-7xl mx-auto p-6" }, 
                     React.createElement('div', { className: "grid grid-cols-12 gap-6 h-[calc(100vh-200px)]" }, 
@@ -2580,18 +2395,14 @@ color: colors.storm
                                             result.definition && React.createElement('p', {  
                                                 className: "text-sm text-gray-600 line-clamp-2 mb-2"  
                                             }, result.definition), 
-                                            result.monitors && React.createElement('div', { className: "flex flex-wrap gap-1" }, 
-                                                result.monitors.slice(0, 3).map(monitorId => { 
-                                                    const monitor = monitors.find(m => m.id === monitorId); 
-                                                    return monitor ? React.createElement('button', { 
-                                                        key: monitorId, 
-                                                        className: "inline-block px-2 py-1 text-xs rounded-full text-white hover:opacity-80 transition-opacity", 
-style: { backgroundColor: monitor.color }, 
-                                                        onClick: (e) => { 
-                                                            e.stopPropagation(); 
-                                                            handleMonitorClick(monitorId); 
-                                                        } 
-                                                    }, monitor.name) : null; 
+                                            result.monitors && React.createElement('div', { className: "flex flex-wrap gap-1" },
+                                                result.monitors.slice(0, 3).map(monitorId => {
+                                                    const monitor = monitors.find(m => m.id === monitorId);
+                                                    return monitor ? React.createElement('span', {
+                                                        key: monitorId,
+                                                        className: "inline-block px-2 py-1 text-xs rounded-full text-white",
+style: { backgroundColor: monitor.color }
+                                                    }, monitor.name) : null;
                                                 }), 
                                                 result.monitors.length > 3 && React.createElement('span', { 
                                                     className: "inline-block px-2 py-1 text-xs rounded-full text-white", 
